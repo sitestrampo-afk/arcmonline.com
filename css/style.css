@@ -6888,6 +6888,51 @@ Back To Top Section
     font-weight: 600;
 }
 
+.floating-whatsapp {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9998;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #25d366;
+    color: #fff !important;
+    font-size: 30px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cd-top {
+    right: 22px;
+    bottom: 92px;
+}
+
+.floating-whatsapp:hover,
+.floating-whatsapp:focus {
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+}
+
+@media (max-width: 575px) {
+    .cd-top {
+        right: 14px;
+        bottom: 78px;
+    }
+
+    .floating-whatsapp {
+        right: 12px;
+        bottom: 12px;
+        width: 52px;
+        height: 52px;
+        font-size: 26px;
+    }
+}
+
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
