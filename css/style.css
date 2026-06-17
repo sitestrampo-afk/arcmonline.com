@@ -6896,9 +6896,11 @@ Back To Top Section
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 58px;
+    gap: 10px;
+    min-width: 58px;
     height: 58px;
-    border-radius: 50%;
+    padding: 0 18px;
+    border-radius: 999px;
     background: #25d366;
     color: #fff !important;
     font-size: 30px;
@@ -6918,6 +6920,12 @@ Back To Top Section
     box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
 }
 
+.floating-whatsapp span {
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
 @media (max-width: 575px) {
     .cd-top {
         right: 14px;
@@ -6927,9 +6935,14 @@ Back To Top Section
     .floating-whatsapp {
         right: 12px;
         bottom: 12px;
-        width: 52px;
+        height: 52px;
+        padding: 0 14px;
         height: 52px;
         font-size: 26px;
+    }
+
+    .floating-whatsapp span {
+        font-size: 13px;
     }
 }
 
