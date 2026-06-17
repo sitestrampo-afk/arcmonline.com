@@ -6935,14 +6935,16 @@ Back To Top Section
     .floating-whatsapp {
         right: 12px;
         bottom: 12px;
+        width: 52px;
         height: 52px;
-        padding: 0 14px;
-        height: 52px;
+        min-width: 52px;
+        padding: 0;
+        border-radius: 50%;
         font-size: 26px;
     }
 
     .floating-whatsapp span {
-        font-size: 13px;
+        display: none;
     }
 }
 
