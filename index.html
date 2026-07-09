@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>mandaliti.</title>
-    <meta name="description" content="Um escritorio altamente especializado que une tradicao e inovacao com solucoes de tecnologia para levar a voce os melhores resultados.">
+    <meta name="description" content="Servicos financeiros e atendimento especializado com negociacao, segunda via de boleto e suporte digital para levar voce aos melhores resultados.">
     <link rel="shortcut icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -235,7 +235,7 @@
             overflow: hidden;
             background:
                 linear-gradient(135deg, rgba(6, 8, 12, 0.8), rgba(32, 34, 40, 0.75)),
-                url("images/hero-1.jpg") center/cover no-repeat;
+                url("images/institutional-hero.png") center/cover no-repeat;
             box-shadow: var(--shadow);
         }
 
@@ -471,7 +471,7 @@
             overflow: hidden;
             background:
                 linear-gradient(180deg, rgba(15, 17, 23, 0.14), rgba(15, 17, 23, 0.62)),
-                url("images/hero-2.jpg") center/cover no-repeat;
+                url("images/institutional-consulting.png") center/cover no-repeat;
             box-shadow: var(--shadow);
         }
 
@@ -526,6 +526,210 @@
             color: var(--muted);
             font-size: 1rem;
             line-height: 1.5;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .news-card {
+            overflow: hidden;
+            border: 1px solid rgba(23, 24, 28, 0.08);
+            border-radius: 24px;
+            background: #fff;
+            box-shadow: 0 16px 38px rgba(18, 24, 38, 0.06);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 26px 48px rgba(18, 24, 38, 0.12);
+        }
+
+        .news-card:hover .news-media img {
+            transform: scale(1.06);
+        }
+
+        .news-media {
+            position: relative;
+            aspect-ratio: 16 / 11;
+            overflow: hidden;
+        }
+
+        .news-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.35s ease;
+        }
+
+        .news-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(17, 24, 39, 0.02), rgba(17, 24, 39, 0.28));
+        }
+
+        .news-body {
+            padding: 28px;
+        }
+
+        .news-tag {
+            display: inline-block;
+            margin-bottom: 14px;
+            color: var(--accent);
+            font-size: 0.86rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .news-card h3 {
+            margin: 0 0 12px;
+            font-family: "Manrope", sans-serif;
+            font-size: 1.55rem;
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+        }
+
+        .news-card p {
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .news-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            font-size: 0.92rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+
+        .news-link::after {
+            content: "\2192";
+        }
+
+        .showcase {
+            background: linear-gradient(180deg, rgba(239, 240, 243, 0.68), rgba(255, 255, 255, 0.95));
+            border-top: 1px solid rgba(23, 24, 28, 0.04);
+            border-bottom: 1px solid rgba(23, 24, 28, 0.04);
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+            gap: 26px;
+            align-items: stretch;
+        }
+
+        .showcase-feature {
+            position: relative;
+            min-height: 540px;
+            overflow: hidden;
+            border-radius: 28px;
+            background: #111;
+            box-shadow: var(--shadow);
+        }
+
+        .showcase-feature img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.45s ease;
+        }
+
+        .showcase-feature:hover img {
+            transform: scale(1.05);
+        }
+
+        .showcase-feature::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(8, 10, 15, 0.08), rgba(8, 10, 15, 0.78));
+        }
+
+        .showcase-content {
+            position: absolute;
+            left: 32px;
+            right: 32px;
+            bottom: 32px;
+            z-index: 1;
+            color: #fff;
+        }
+
+        .showcase-content h3 {
+            margin: 10px 0 12px;
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(2rem, 3vw, 3rem);
+            line-height: 1.04;
+            letter-spacing: -0.05em;
+        }
+
+        .showcase-content p {
+            max-width: 520px;
+            margin: 0 0 18px;
+            color: rgba(255, 255, 255, 0.82);
+            line-height: 1.6;
+        }
+
+        .showcase-side {
+            display: grid;
+            gap: 26px;
+        }
+
+        .showcase-card {
+            position: relative;
+            overflow: hidden;
+            min-height: 257px;
+            border-radius: 24px;
+            box-shadow: 0 18px 38px rgba(18, 24, 38, 0.08);
+        }
+
+        .showcase-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.35s ease;
+        }
+
+        .showcase-card:hover img {
+            transform: scale(1.07);
+        }
+
+        .showcase-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10, 12, 16, 0.05), rgba(10, 12, 16, 0.74));
+        }
+
+        .showcase-card-body {
+            position: absolute;
+            inset: auto 24px 24px 24px;
+            z-index: 1;
+            color: #fff;
+        }
+
+        .showcase-card-body h4 {
+            margin: 8px 0 8px;
+            font-family: "Manrope", sans-serif;
+            font-size: 1.5rem;
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+        }
+
+        .showcase-card-body p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.55;
         }
 
         .cta-band {
@@ -665,8 +869,13 @@
             }
 
             .service-grid,
-            .metrics-grid {
+            .metrics-grid,
+            .news-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .showcase-grid {
+                grid-template-columns: 1fr;
             }
 
             .cta-panel {
@@ -724,7 +933,8 @@
             }
 
             .service-grid,
-            .metrics-grid {
+            .metrics-grid,
+            .news-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -733,6 +943,10 @@
             .metric-card,
             .cta-panel {
                 padding: 28px;
+            }
+
+            .showcase-feature {
+                min-height: 420px;
             }
 
             .hero h1 {
@@ -763,7 +977,7 @@
                     <a href="#sobre">Sobre</a>
                     <a href="#servicos">Servi&ccedil;os</a>
                     <a href="#noticias">Not&iacute;cias</a>
-                    <a href="#carreira">Carreira</a>
+                    <a href="#atendimento">Atendimento</a>
                     <a href="#contato">Contato</a>
                 </nav>
                 <a class="nav-cta" href="https://wa.me/5511977196953?text=Ola%2C%20quero%20falar%20com%20um%20especialista." target="_blank" rel="noopener noreferrer">Contato</a>
@@ -778,18 +992,18 @@
                     <div>
                         <span class="eyebrow">mandaliti</span>
                         <h1>Intelig&ecirc;ncia para voc&ecirc; ir <span>al&eacute;m.</span></h1>
-                        <p>Um escrit&oacute;rio altamente especializado que une tradi&ccedil;&atilde;o e inova&ccedil;&atilde;o com solu&ccedil;&otilde;es de tecnologia para levar a voc&ecirc; os melhores resultados.</p>
+                        <p>Uma opera&ccedil;&atilde;o especializada em servi&ccedil;os financeiros e atendimento que une experi&ecirc;ncia, agilidade e solu&ccedil;&otilde;es digitais para levar voc&ecirc; aos melhores resultados.</p>
                         <div class="hero-actions">
                             <a class="hero-primary" href="#servicos">Nossos Servi&ccedil;os</a>
                             <a class="hero-secondary" href="https://wa.me/5511960238897?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista." target="_blank" rel="noopener noreferrer">Fale com um especialista</a>
                         </div>
                     </div>
-                    <article class="hero-card" aria-label="Destaque institucional">
+                    <article class="hero-card" aria-label="Destaque de atendimento financeiro">
                         <div class="hero-card-content">
                             <span class="hero-card-kicker">Mandaliti</span>
-                            <h2>Atendimento jur&iacute;dico com estrutura moderna, objetiva e confi&aacute;vel.</h2>
-                            <p>Uma presen&ccedil;a digital preparada para comunicar especializa&ccedil;&atilde;o, acolhimento e resultado com clareza.</p>
-                            <a class="hero-card-link" href="#sobre">Conhe&ccedil;a o escrit&oacute;rio</a>
+                            <h2>Atendimento financeiro com estrutura moderna, objetiva e confi&aacute;vel.</h2>
+                            <p>Uma presen&ccedil;a digital preparada para comunicar seguran&ccedil;a, acolhimento e solu&ccedil;&otilde;es de negocia&ccedil;&atilde;o com clareza.</p>
+                            <a class="hero-card-link" href="#sobre">Conhe&ccedil;a a opera&ccedil;&atilde;o</a>
                         </div>
                     </article>
                 </div>
@@ -808,7 +1022,7 @@
                     <article class="service-card">
                         <div class="service-icon">$</div>
                         <h3>Recupera&ccedil;&atilde;o de Cr&eacute;dito</h3>
-                        <p>Estrat&eacute;gias eficientes para recupera&ccedil;&atilde;o de ativos com seguran&ccedil;a jur&iacute;dica.</p>
+                        <p>Estrat&eacute;gias eficientes para regulariza&ccedil;&atilde;o financeira, recupera&ccedil;&atilde;o de cr&eacute;dito e negocia&ccedil;&atilde;o com atendimento seguro.</p>
                         <a class="service-link" href="https://wa.me/5511960238897?text=Quero%20saber%20mais%20sobre%20recupera%C3%A7%C3%A3o%20de%20cr%C3%A9dito." target="_blank" rel="noopener noreferrer">Saiba Mais</a>
                     </article>
                     <article class="service-card">
@@ -826,7 +1040,7 @@
                     <article class="service-card">
                         <div class="service-icon">@</div>
                         <h3>Outros Servi&ccedil;os</h3>
-                        <p>Consultoria jur&iacute;dica completa para diversas &aacute;reas do direito.</p>
+                        <p>Atendimento completo para acordos, atualiza&ccedil;&atilde;o cadastral, suporte financeiro e orienta&ccedil;&otilde;es ao cliente.</p>
                         <a class="service-link" href="https://wa.me/5511977196953?text=Preciso%20falar%20sobre%20outros%20servi%C3%A7os." target="_blank" rel="noopener noreferrer">Falar Agora</a>
                     </article>
                 </div>
@@ -840,28 +1054,28 @@
                         <div class="section-header left">
                             <span class="section-kicker">Sobre</span>
                             <h2>mandaliti.</h2>
-                            <p>O Mandaliti est&aacute; preparado para atender a demanda e as expectativas do cliente. Entendemos e valorizamos a import&acirc;ncia da pessoalidade na presta&ccedil;&atilde;o de servi&ccedil;os jur&iacute;dicos.</p>
+                            <p>O Mandaliti est&aacute; preparado para atender a demanda e as expectativas do cliente. Entendemos e valorizamos a import&acirc;ncia da clareza, da agilidade e da pessoalidade no atendimento financeiro.</p>
                         </div>
                         <div class="about-list">
                             <div class="about-item">
                                 <div class="about-item-mark">01</div>
                                 <div>
                                     <strong>Tradi&ccedil;&atilde;o e inova&ccedil;&atilde;o</strong>
-                                    <span>Uma comunica&ccedil;&atilde;o que combina autoridade institucional com uma experi&ecirc;ncia digital atual.</span>
+                                    <span>Uma comunica&ccedil;&atilde;o que combina credibilidade, clareza e uma experi&ecirc;ncia digital atual.</span>
                                 </div>
                             </div>
                             <div class="about-item">
                                 <div class="about-item-mark">02</div>
                                 <div>
                                     <strong>Solu&ccedil;&otilde;es com tecnologia</strong>
-                                    <span>Estrutura preparada para apresentar servi&ccedil;os com clareza, organiza&ccedil;&atilde;o e agilidade.</span>
+                                    <span>Estrutura preparada para apresentar servi&ccedil;os, acordos e canais de contato com clareza, organiza&ccedil;&atilde;o e agilidade.</span>
                                 </div>
                             </div>
                             <div class="about-item">
                                 <div class="about-item-mark">03</div>
                                 <div>
                                     <strong>Atendimento personalizado</strong>
-                                    <span>O site refor&ccedil;a proximidade, confian&ccedil;a e direciona o visitante para o contato certo.</span>
+                                    <span>O site refor&ccedil;a proximidade, confian&ccedil;a e direciona o visitante para o canal certo de negocia&ccedil;&atilde;o.</span>
                                 </div>
                             </div>
                         </div>
@@ -880,34 +1094,94 @@
             <div class="container">
                 <div class="section-header">
                     <span class="section-kicker">Not&iacute;cias</span>
-                    <h2>Conte&uacute;do institucional com a mesma linguagem visual do restante do site</h2>
-                    <p>Espa&ccedil;o preparado para publicar novidades, comunicados e atualiza&ccedil;&otilde;es importantes da opera&ccedil;&atilde;o.</p>
+                    <h2>Conte&uacute;do financeiro com mais contexto, imagem e navega&ccedil;&atilde;o visual</h2>
+                    <p>Agora essa &aacute;rea comunica melhor a atua&ccedil;&atilde;o da opera&ccedil;&atilde;o e cria pontos de entrada mais fortes para os principais assuntos do site.</p>
                 </div>
-                <div class="metrics-grid">
-                    <article class="metric-card">
-                        <strong>01</strong>
-                        <span>Atualiza&ccedil;&otilde;es institucionais e informativos relevantes para clientes e parceiros.</span>
+                <div class="news-grid">
+                    <article class="news-card">
+                        <div class="news-media">
+                            <img src="images/institutional-support.png" alt="Atendimento especializado Mandaliti">
+                        </div>
+                        <div class="news-body">
+                            <span class="news-tag">Atualiza&ccedil;&otilde;es</span>
+                            <h3>Comunicados sobre atendimento, canais digitais e condi&ccedil;&otilde;es de regulariza&ccedil;&atilde;o</h3>
+                            <p>Espa&ccedil;o preparado para destacar novidades da opera&ccedil;&atilde;o, mensagens importantes ao cliente e melhorias nos canais de suporte.</p>
+                            <a class="news-link" href="#contato">Saiba mais</a>
+                        </div>
                     </article>
-                    <article class="metric-card">
-                        <strong>02</strong>
-                        <span>Publica&ccedil;&otilde;es sobre servi&ccedil;os, comunicados e temas de interesse jur&iacute;dico.</span>
+                    <article class="news-card">
+                        <div class="news-media">
+                            <img src="images/institutional-digital.png" alt="Servi&ccedil;os financeiros digitais Mandaliti">
+                        </div>
+                        <div class="news-body">
+                            <span class="news-tag">Servi&ccedil;os</span>
+                            <h3>Publica&ccedil;&otilde;es sobre recupera&ccedil;&atilde;o, boletos e condi&ccedil;&otilde;es de pagamento</h3>
+                            <p>Bloco pensado para apresentar informa&ccedil;&otilde;es objetivas sobre os servi&ccedil;os mais acessados, com melhor clareza visual e orienta&ccedil;&atilde;o ao cliente.</p>
+                            <a class="news-link" href="#servicos">Ver servi&ccedil;os</a>
+                        </div>
                     </article>
-                    <article class="metric-card">
-                        <strong>03</strong>
-                        <span>Estrutura flex&iacute;vel para crescer com novas se&ccedil;&otilde;es e novos destaques editoriais.</span>
+                    <article class="news-card">
+                        <div class="news-media">
+                            <img src="images/institutional-handshake.png" alt="Relacionamento e acordos com clientes Mandaliti">
+                        </div>
+                        <div class="news-body">
+                            <span class="news-tag">Relacionamento</span>
+                            <h3>Estrutura flex&iacute;vel para orienta&ccedil;&otilde;es, avisos e novos destaques de atendimento</h3>
+                            <p>O site passa a ter uma base melhor para evoluir com campanhas, conte&uacute;do informativo e refor&ccedil;o de confian&ccedil;a nos servi&ccedil;os.</p>
+                            <a class="news-link" href="#sobre">Conhecer mais</a>
+                        </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="cta-band" id="carreira">
+        <section class="section showcase" id="destaques">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-kicker">Destaques</span>
+                    <h2>Mais se&ccedil;&otilde;es visuais para enriquecer o conte&uacute;do do site</h2>
+                    <p>Inclu&iacute; um bloco com imagens interativas para apoiar a comunica&ccedil;&atilde;o dos servi&ccedil;os financeiros e deixar a experi&ecirc;ncia mais rica.</p>
+                </div>
+                <div class="showcase-grid">
+                    <article class="showcase-feature">
+                        <img src="images/institutional-hero.png" alt="Equipe institucional Mandaliti em reuni&atilde;o">
+                        <div class="showcase-content">
+                            <span class="news-tag">Atendimento</span>
+                            <h3>Uma experi&ecirc;ncia digital mais forte para apresentar suporte, seguran&ccedil;a e proximidade</h3>
+                            <p>Esse destaque principal funciona como uma &aacute;rea para campanhas de negocia&ccedil;&atilde;o, atualiza&ccedil;&atilde;o de canais e refor&ccedil;o de atendimento.</p>
+                            <a class="news-link" href="#contato">Fale com a equipe</a>
+                        </div>
+                    </article>
+                    <div class="showcase-side">
+                        <article class="showcase-card">
+                            <img src="images/institutional-digital.png" alt="Tecnologia e apoio financeiro">
+                            <div class="showcase-card-body">
+                                <span class="news-tag">Tecnologia</span>
+                                <h4>Solu&ccedil;&otilde;es com apoio digital e mais fluidez no atendimento</h4>
+                                <p>Bloco ideal para refor&ccedil;ar canais online, praticidade e estrutura operacional.</p>
+                            </div>
+                        </article>
+                        <article class="showcase-card">
+                            <img src="images/institutional-consulting.png" alt="Equipe e relacionamento com clientes">
+                            <div class="showcase-card-body">
+                                <span class="news-tag">Equipe</span>
+                                <h4>Pessoalidade no atendimento e no suporte ao cliente</h4>
+                                <p>Um segundo destaque para humanizar a marca e apoiar a narrativa de acolhimento e resolu&ccedil;&atilde;o.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-band" id="atendimento">
             <div class="container">
                 <div class="cta-panel">
                     <div>
-                        <h2>Carreira</h2>
-                        <p>Uma se&ccedil;&atilde;o pronta para apresentar oportunidades, cultura e caminhos de crescimento com a mesma identidade institucional do site.</p>
+                        <h2>Atendimento</h2>
+                        <p>Espa&ccedil;o para destacar canais de contato, suporte especializado, negocia&ccedil;&otilde;es e orienta&ccedil;&otilde;es com a mesma identidade visual do restante do site.</p>
                     </div>
-                    <a class="cta-button" href="https://wa.me/5511960238897?text=Ol%C3%A1%2C%20quero%20falar%20sobre%20carreira." target="_blank" rel="noopener noreferrer">Fale com um especialista</a>
+                    <a class="cta-button" href="https://wa.me/5511960238897?text=Ol%C3%A1%2C%20quero%20falar%20sobre%20atendimento." target="_blank" rel="noopener noreferrer">Fale com um especialista</a>
                 </div>
             </div>
         </section>
@@ -919,7 +1193,7 @@
             <div class="footer-grid">
                 <div>
                     <div class="footer-brand">mandaliti<span>.</span></div>
-                    <p>O Mandaliti est&aacute; preparado para atender a demanda e as expectativas do cliente. Entendemos e valorizamos a import&acirc;ncia da pessoalidade na presta&ccedil;&atilde;o de servi&ccedil;os jur&iacute;dicos.</p>
+                    <p>O Mandaliti est&aacute; preparado para atender a demanda e as expectativas do cliente. Entendemos e valorizamos a import&acirc;ncia da pessoalidade, da clareza e da agilidade nos servi&ccedil;os financeiros e no atendimento.</p>
                 </div>
                 <div>
                     <h3 class="footer-title">Links</h3>
