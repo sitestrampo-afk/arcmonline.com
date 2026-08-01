@@ -2,1225 +2,934 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mandaliti.</title>
-    <meta name="description" content="Servicos financeiros e atendimento especializado com negociacao, segunda via de boleto e suporte digital para levar voce aos melhores resultados.">
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícias | Portal Financeiro</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
          :root {
-            --bg: #f5f5f3;
-            --surface: #ffffff;
-            --surface-muted: #f0f1f4;
-            --text: #17181c;
-            --muted: #5f6673;
-            --accent: #c62828;
-            --accent-dark: #9f1f1f;
-            --border: #e6e6e8;
-            --footer: #171717;
-            --shadow: 0 24px 60px rgba(16, 18, 23, 0.12);
-            --radius-lg: 28px;
-            --radius-md: 18px;
-            --radius-sm: 12px;
-            --container: 1240px;
+            /* Premium Finance Color Palette */
+            --bg-body: #f4f7f6;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --primary-color: #020617;
+            /* Very deep slate */
+            --accent-green: #10b981;
+            /* Emerald */
+            --accent-green-hover: #059669;
+            --accent-blue: #3b82f6;
+            --border-light: #e2e8f0;
+            --font-body: 'Inter', sans-serif;
+            --font-display: 'Plus Jakarta Sans', sans-serif;
+            --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.04);
+            --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+            --shadow-lg: 0 12px 24px rgba(15, 23, 42, 0.08);
+            --radius-md: 12px;
+            --radius-lg: 20px;
         }
         
         * {
             box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
         }
         
         body {
-            margin: 0;
-            font-family: "Source Sans 3", sans-serif;
-            color: var(--text);
-            background: radial-gradient(circle at top left, rgba(198, 40, 40, 0.08), transparent 28%), linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+            font-family: var(--font-body);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        /* Ticker Top Bar */
+        
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background-color: var(--primary-color);
+            color: #f8fafc;
+            padding: 8px 0;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 101;
         }
         
-        a {
-            color: inherit;
-            text-decoration: none;
+        .ticker {
+            display: inline-block;
+            white-space: nowrap;
+            padding-right: 100%;
+            animation: ticker 30s linear infinite;
         }
         
-        img {
-            display: block;
-            max-width: 100%;
+        .ticker-item {
+            display: inline-block;
+            padding: 0 2rem;
+            color: #cbd5e1;
         }
         
-        .container {
-            width: min(calc(100% - 40px), var(--container));
-            margin: 0 auto;
+        .ticker-item span.up {
+            color: var(--accent-green);
         }
         
-        .topbar {
+        .ticker-item span.down {
+            color: #ef4444;
+        }
+        
+        @keyframes ticker {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+            100% {
+                transform: translate3d(-100%, 0, 0);
+            }
+        }
+        /* Header */
+        
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
             position: sticky;
             top: 0;
-            z-index: 20;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(23, 24, 28, 0.06);
+            z-index: 100;
+            transition: all 0.3s ease;
         }
         
-        .nav-shell {
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.25rem 5%;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            gap: 24px;
-            padding: 20px 0;
+            align-items: center;
         }
         
-        .brand {
-            font-family: "Manrope", sans-serif;
-            font-size: 2rem;
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
             font-weight: 800;
-            letter-spacing: -0.04em;
-        }
-        
-        .brand span {
-            color: var(--accent);
-        }
-        
-        .nav-links {
+            color: var(--primary-color);
+            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 34px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
+            gap: 0.5rem;
+            letter-spacing: -0.02em;
         }
         
-        .nav-links a {
-            color: #6a6f78;
+        .logo span {
+            color: var(--accent-green);
+        }
+        
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 4px;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
             transition: color 0.2s ease;
         }
         
-        .nav-links a:hover,
-        .nav-links a:focus-visible {
-            color: var(--text);
+        nav a:hover,
+        nav a.active {
+            color: var(--primary-color);
         }
         
-        .nav-cta,
-        .hero-primary,
-        .cta-button,
-        .service-link {
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        .btn-subscribe {
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s, transform 0.2s;
         }
         
-        .nav-cta,
-        .hero-primary,
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 52px;
-            padding: 0 28px;
-            border-radius: 10px;
-            background: var(--accent);
-            color: #fff;
-            font-size: 0.95rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            box-shadow: 0 16px 30px rgba(198, 40, 40, 0.22);
+        .btn-subscribe:hover {
+            background-color: var(--text-muted);
+            color: var(--primary-color);
+            transform: translateY(-1px);
+        }
+        /* Main Content */
+        
+        main {
+            flex: 1;
+            padding: 2rem 5% 5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
         }
         
-        .nav-cta:hover,
-        .hero-primary:hover,
-        .cta-button:hover {
-            background: var(--accent-dark);
-            transform: translateY(-2px);
-        }
-        
-        .mobile-toggle {
-            display: none;
-            border: 0;
-            background: transparent;
-            padding: 6px;
-            cursor: pointer;
-        }
-        
-        .mobile-toggle span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            margin: 5px 0;
-            background: var(--text);
-        }
-        
-        .hero {
-            padding: 72px 0 88px;
-        }
-        
-        .hero-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
-            gap: 56px;
-            align-items: center;
-        }
-        
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 16px;
-            border-radius: 999px;
-            background: rgba(198, 40, 40, 0.08);
-            color: var(--accent);
-            font-size: 0.92rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-        
-        .hero h1 {
-            margin: 24px 0 20px;
-            max-width: 680px;
-            font-family: "Manrope", sans-serif;
-            font-size: clamp(3rem, 6vw, 5.2rem);
-            line-height: 0.95;
-            letter-spacing: -0.06em;
-        }
-        
-        .hero h1 span {
-            color: var(--accent);
-        }
-        
-        .hero p {
-            max-width: 640px;
-            margin: 0;
-            color: var(--muted);
-            font-size: 1.18rem;
-            line-height: 1.55;
-        }
-        
-        .hero-actions {
+        .page-header {
+            margin-bottom: 3rem;
             display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 18px 24px;
-            margin-top: 38px;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-light);
         }
         
-        .hero-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: #111827;
-            font-size: 0.96rem;
+        .page-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
             font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
+            color: var(--primary-color);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
         }
         
-        .hero-secondary::after {
-            content: "\2192";
-            color: var(--accent);
+        .page-subtitle {
+            color: var(--text-muted);
             font-size: 1.1rem;
+            margin-top: 0.5rem;
         }
         
-        .hero-card {
-            position: relative;
-            min-height: 420px;
-            padding: 28px;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            background: linear-gradient(135deg, rgba(6, 8, 12, 0.8), rgba(32, 34, 40, 0.75)), url("images/institutional-hero.png") center/cover no-repeat;
-            box-shadow: var(--shadow);
-        }
-        
-        .hero-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(140deg, rgba(198, 40, 40, 0.28), transparent 42%), linear-gradient(0deg, rgba(11, 13, 18, 0.7), rgba(11, 13, 18, 0.1));
-        }
-        
-        .hero-card-content {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            height: 100%;
-            color: #fff;
-        }
-        
-        .hero-card-kicker {
-            font-size: 0.92rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .hero-card h2 {
-            margin: 10px 0 14px;
-            max-width: 360px;
-            font-family: "Manrope", sans-serif;
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            line-height: 1.05;
-            letter-spacing: -0.04em;
-        }
-        
-        .hero-card p {
-            max-width: 380px;
-            color: rgba(255, 255, 255, 0.82);
-            font-size: 1rem;
-        }
-        
-        .hero-card-link {
+        .live-indicator {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            margin-top: 18px;
-            color: #fff;
-            font-weight: 700;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green-hover);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
         }
         
-        .hero-card-link::after {
-            content: "\2192";
-            color: #ff8b8b;
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            animation: pulse 1.5s infinite;
         }
         
-        .section {
-            padding: 88px 0;
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+        /* Status Containers */
+        
+        .status-container {
+            text-align: center;
+            padding: 6rem 0;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 3px solid var(--border-light);
+            border-bottom-color: var(--accent-green);
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+        
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        .loading-text-sub {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            height: 20px;
+        }
+        /* Grid */
+        
+        .category-section {
+            margin-bottom: 4rem;
         }
         
         .section-header {
-            text-align: center;
-            margin-bottom: 52px;
-        }
-        
-        .section-header.left {
-            text-align: left;
-            margin-bottom: 34px;
-        }
-        
-        .section-kicker {
-            color: var(--accent);
-            font-size: 0.9rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        
-        .section-header h2 {
-            margin: 12px 0 14px;
-            font-family: "Manrope", sans-serif;
-            font-size: clamp(2rem, 3vw, 3.2rem);
-            line-height: 1.05;
-            letter-spacing: -0.05em;
-        }
-        
-        .section-header p {
-            max-width: 720px;
-            margin: 0 auto;
-            color: var(--muted);
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        
-        .section-header.left p {
-            margin: 0;
-        }
-        
-        .section-divider {
-            width: 48px;
-            height: 4px;
-            margin: 18px auto 0;
-            border-radius: 999px;
-            background: var(--accent);
-        }
-        
-        .services {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(239, 240, 243, 0.96));
-            border-top: 1px solid rgba(23, 24, 28, 0.04);
-            border-bottom: 1px solid rgba(23, 24, 28, 0.04);
-        }
-        
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 24px;
-        }
-        
-        .service-card {
-            padding: 32px;
-            border: 1px solid var(--border);
-            border-radius: 22px;
-            background: var(--surface);
-            box-shadow: 0 10px 30px rgba(18, 24, 38, 0.04);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 22px 40px rgba(18, 24, 38, 0.08);
-        }
-        
-        .service-icon {
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            justify-content: center;
-            width: 54px;
-            height: 54px;
-            border-radius: 14px;
-            background: #f7f7f8;
-            color: var(--accent);
-            font-size: 1.4rem;
-            font-weight: 800;
+            justify-content: space-between;
+            margin-bottom: 2rem;
         }
         
-        .service-card h3 {
-            margin: 28px 0 14px;
-            font-family: "Manrope", sans-serif;
-            font-size: 1.9rem;
-            line-height: 1.05;
-            letter-spacing: -0.04em;
-        }
-        
-        .service-card p {
-            margin: 0 0 28px;
-            color: var(--muted);
-            font-size: 1.05rem;
-            line-height: 1.55;
-        }
-        
-        .service-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--accent);
-            font-size: 0.92rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-        
-        .service-link::after {
-            content: "\203A";
-            font-size: 1.2rem;
-        }
-        
-        .about-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-            gap: 36px;
-            align-items: center;
-        }
-        
-        .about-panel {
-            padding: 42px;
-            border-radius: var(--radius-lg);
-            background: var(--surface);
-            box-shadow: var(--shadow);
-        }
-        
-        .about-list {
-            display: grid;
-            gap: 18px;
-            margin-top: 28px;
-        }
-        
-        .about-item {
-            display: grid;
-            grid-template-columns: 44px 1fr;
-            gap: 16px;
-            align-items: start;
-        }
-        
-        .about-item-mark {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-            background: rgba(198, 40, 40, 0.1);
-            color: var(--accent);
-            font-weight: 800;
-        }
-        
-        .about-item strong {
-            display: block;
-            margin-bottom: 4px;
-            font-size: 1.05rem;
-        }
-        
-        .about-item span {
-            color: var(--muted);
-            line-height: 1.5;
-        }
-        
-        .about-visual {
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--primary-color);
             position: relative;
-            min-height: 520px;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            background: linear-gradient(180deg, rgba(15, 17, 23, 0.14), rgba(15, 17, 23, 0.62)), url("images/institutional-consulting.png") center/cover no-repeat;
-            box-shadow: var(--shadow);
+            padding-left: 1rem;
+            display: flex;
+            align-items: center;
         }
         
-        .about-badge {
+        .section-title::before {
+            content: '';
             position: absolute;
-            right: 28px;
-            bottom: 28px;
-            max-width: 280px;
-            padding: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            background: rgba(18, 20, 26, 0.82);
-            color: #fff;
-            backdrop-filter: blur(12px);
-        }
-        
-        .about-badge strong {
-            display: block;
-            margin-bottom: 8px;
-            font-family: "Manrope", sans-serif;
-            font-size: 1.2rem;
-        }
-        
-        .metrics {
-            padding-top: 18px;
-        }
-        
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 24px;
-        }
-        
-        .metric-card {
-            padding: 30px;
-            border-radius: 22px;
-            background: linear-gradient(180deg, #ffffff, #f4f4f6);
-            border: 1px solid rgba(23, 24, 28, 0.06);
-        }
-        
-        .metric-card strong {
-            display: block;
-            font-family: "Manrope", sans-serif;
-            font-size: clamp(2.2rem, 4vw, 3.4rem);
-            line-height: 1;
-            letter-spacing: -0.06em;
-        }
-        
-        .metric-card span {
-            display: block;
-            margin-top: 10px;
-            color: var(--muted);
-            font-size: 1rem;
-            line-height: 1.5;
+            left: 0;
+            height: 100%;
+            width: 4px;
+            background-color: var(--accent-green);
+            border-radius: 4px;
         }
         
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 24px;
+            grid-template-columns: 1fr;
+            gap: 2rem;
         }
         
-        .news-card {
+        @media (min-width: 768px) {
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .news-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        /* Modern Card Design */
+        
+        .card {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            border: 1px solid rgba(23, 24, 28, 0.08);
-            border-radius: 24px;
-            background: #fff;
-            box-shadow: 0 16px 38px rgba(18, 24, 38, 0.06);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-        
-        .news-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 26px 48px rgba(18, 24, 38, 0.12);
-        }
-        
-        .news-card:hover .news-media img {
-            transform: scale(1.06);
-        }
-        
-        .news-media {
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
             position: relative;
-            aspect-ratio: 16 / 11;
-            overflow: hidden;
+            text-decoration: none;
         }
         
-        .news-media img {
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+        
+        .card-img-container {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.35s ease;
+            height: 220px;
+            overflow: hidden;
+            background-color: var(--border-light);
+            position: relative;
         }
         
-        .news-media::after {
-            content: "";
+        .card-category-badge {
             position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(17, 24, 39, 0.02), rgba(17, 24, 39, 0.28));
-        }
-        
-        .news-body {
-            padding: 28px;
-        }
-        
-        .news-tag {
-            display: inline-block;
-            margin-bottom: 14px;
-            color: var(--accent);
-            font-size: 0.86rem;
-            font-weight: 800;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            z-index: 2;
+            backdrop-filter: blur(4px);
         }
         
-        .news-card h3 {
-            margin: 0 0 12px;
-            font-family: "Manrope", sans-serif;
-            font-size: 1.55rem;
-            line-height: 1.08;
-            letter-spacing: -0.04em;
-        }
-        
-        .news-card p {
-            margin: 0 0 18px;
-            color: var(--muted);
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-        
-        .news-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--accent);
-            font-size: 0.92rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.07em;
-        }
-        
-        .news-link::after {
-            content: "\2192";
-        }
-        
-        .showcase {
-            background: linear-gradient(180deg, rgba(239, 240, 243, 0.68), rgba(255, 255, 255, 0.95));
-            border-top: 1px solid rgba(23, 24, 28, 0.04);
-            border-bottom: 1px solid rgba(23, 24, 28, 0.04);
-        }
-        
-        .showcase-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-            gap: 26px;
-            align-items: stretch;
-        }
-        
-        .showcase-feature {
-            position: relative;
-            min-height: 540px;
-            overflow: hidden;
-            border-radius: 28px;
-            background: #111;
-            box-shadow: var(--shadow);
-        }
-        
-        .showcase-feature img {
+        .card-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.45s ease;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .showcase-feature:hover img {
+        .card:hover .card-img {
             transform: scale(1.05);
         }
         
-        .showcase-feature::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(8, 10, 15, 0.08), rgba(8, 10, 15, 0.78));
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
         
-        .showcase-content {
-            position: absolute;
-            left: 32px;
-            right: 32px;
-            bottom: 32px;
-            z-index: 1;
-            color: #fff;
-        }
-        
-        .showcase-content h3 {
-            margin: 10px 0 12px;
-            font-family: "Manrope", sans-serif;
-            font-size: clamp(2rem, 3vw, 3rem);
-            line-height: 1.04;
-            letter-spacing: -0.05em;
-        }
-        
-        .showcase-content p {
-            max-width: 520px;
-            margin: 0 0 18px;
-            color: rgba(255, 255, 255, 0.82);
-            line-height: 1.6;
-        }
-        
-        .showcase-side {
-            display: grid;
-            gap: 26px;
-        }
-        
-        .showcase-card {
-            position: relative;
-            overflow: hidden;
-            min-height: 257px;
-            border-radius: 24px;
-            box-shadow: 0 18px 38px rgba(18, 24, 38, 0.08);
-        }
-        
-        .showcase-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.35s ease;
-        }
-        
-        .showcase-card:hover img {
-            transform: scale(1.07);
-        }
-        
-        .showcase-card::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(10, 12, 16, 0.05), rgba(10, 12, 16, 0.74));
-        }
-        
-        .showcase-card-body {
-            position: absolute;
-            inset: auto 24px 24px 24px;
-            z-index: 1;
-            color: #fff;
-        }
-        
-        .showcase-card-body h4 {
-            margin: 8px 0 8px;
-            font-family: "Manrope", sans-serif;
-            font-size: 1.5rem;
-            line-height: 1.08;
-            letter-spacing: -0.04em;
-        }
-        
-        .showcase-card-body p {
-            margin: 0;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.55;
-        }
-        
-        .cta-band {
-            padding: 48px 0;
-        }
-        
-        .cta-panel {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto;
-            gap: 24px;
+        .card-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+            display: flex;
             align-items: center;
-            padding: 36px 42px;
-            border-radius: 28px;
-            background: linear-gradient(130deg, #1b1d22, #24262d 52%, #7e1d1d 140%);
-            color: #fff;
-            box-shadow: var(--shadow);
+            gap: 6px;
         }
         
-        .cta-panel h2 {
-            margin: 0 0 10px;
-            font-family: "Manrope", sans-serif;
-            font-size: clamp(2rem, 3vw, 3rem);
-            line-height: 1.04;
-            letter-spacing: -0.05em;
+        .card-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            transition: color 0.2s;
         }
         
-        .cta-panel p {
-            margin: 0;
-            max-width: 760px;
-            color: rgba(255, 255, 255, 0.78);
-            font-size: 1.06rem;
-            line-height: 1.55;
+        .card:hover .card-title {
+            color: var(--accent-blue);
         }
         
-        .footer {
-            margin-top: 70px;
-            padding: 76px 0 30px;
-            background: var(--footer);
-            color: #f8f7f4;
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-light);
+            padding-top: 1.25rem;
+            margin-top: auto;
+        }
+        
+        .card-source {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .card-btn {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .card-btn svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s;
+        }
+        
+        .card:hover .card-btn svg {
+            transform: translateX(4px);
+        }
+        /* Footer */
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5rem 5% 2rem;
+            margin-top: auto;
         }
         
         .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: 1.3fr 0.7fr 0.8fr;
-            gap: 50px;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+        
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
         }
         
         .footer-brand {
-            font-family: "Manrope", sans-serif;
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: -0.05em;
+            max-width: 320px;
         }
         
-        .footer-brand span,
-        .footer-title {
-            color: #ff4a4a;
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 1.5rem;
         }
         
-        .footer p,
-        .footer a {
-            color: rgba(248, 247, 244, 0.72);
+        .footer-brand p {
+            color: #94a3b8;
+            font-size: 0.95rem;
             line-height: 1.7;
         }
         
-        .footer-title {
-            margin: 0 0 16px;
-            font-size: 0.95rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
+        .footer-col h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-weight: 600;
         }
         
-        .footer-links,
-        .footer-contact {
-            display: grid;
-            gap: 12px;
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-col ul a {
+            text-decoration: none;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        
+        .footer-col ul a:hover {
+            color: white;
+        }
+
+        .org-details {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .org-details p + p {
+            margin-top: 1rem;
+        }
+
+        .org-details strong {
+            color: white;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .newsletter-form input {
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            outline: none;
+            font-family: var(--font-body);
+            transition: border-color 0.2s;
+        }
+        
+        .newsletter-form input:focus {
+            border-color: var(--accent-green);
+        }
+        
+        .newsletter-form button {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: var(--font-body);
+            transition: background 0.2s, transform 0.2s;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: var(--accent-green-hover);
+            transform: translateY(-1px);
         }
         
         .footer-bottom {
-            margin-top: 40px;
-            padding-top: 22px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            text-align: center;
-            color: rgba(248, 247, 244, 0.45);
-            font-size: 0.92rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-        
-        .floating-whatsapp {
-            position: fixed;
-            right: 24px;
-            bottom: 24px;
-            z-index: 30;
-            display: inline-flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 12px;
-            min-height: 62px;
-            padding: 0 18px 0 14px;
-            border-radius: 999px;
-            background: #25d366;
-            color: #fff;
-            box-shadow: 0 22px 40px rgba(37, 211, 102, 0.28);
-            font-weight: 800;
-            letter-spacing: 0.01em;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #64748b;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
         
-        .floating-whatsapp:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 28px 48px rgba(37, 211, 102, 0.34);
-        }
-        
-        .floating-whatsapp-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.16);
-            flex-shrink: 0;
-        }
-        
-        .floating-whatsapp-icon svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
-        
-        @media (max-width: 1080px) {
-            .hero-grid,
-            .about-grid,
-            .footer-grid {
-                grid-template-columns: 1fr;
+        @media (max-width: 768px) {
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
             }
-            .service-grid,
-            .metrics-grid,
-            .news-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-            .showcase-grid {
-                grid-template-columns: 1fr;
-            }
-            .cta-panel {
-                grid-template-columns: 1fr;
-                text-align: left;
-            }
-        }
-        
-        @media (max-width: 820px) {
-            .nav-shell {
-                flex-wrap: wrap;
-            }
-            .mobile-toggle {
-                display: block;
-                margin-left: auto;
-            }
-            .nav-links {
-                display: none;
-                width: 100%;
+            .page-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 16px;
-                padding: 12px 0 0;
+                gap: 1rem;
             }
-            .nav-shell.is-open .nav-links {
-                display: flex;
-            }
-            .nav-cta {
+            nav {
                 display: none;
-            }
-            .hero {
-                padding-top: 48px;
-            }
-            .hero-card,
-            .about-visual {
-                min-height: 360px;
-            }
-            .section,
-            .footer {
-                padding-top: 64px;
-                padding-bottom: 64px;
-            }
-        }
-        
-        @media (max-width: 640px) {
-            .container {
-                width: min(calc(100% - 28px), var(--container));
-            }
-            .service-grid,
-            .metrics-grid,
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-            .about-panel,
-            .service-card,
-            .metric-card,
-            .cta-panel {
-                padding: 28px;
-            }
-            .showcase-feature {
-                min-height: 420px;
-            }
-            .hero h1 {
-                font-size: 2.85rem;
-            }
-            .floating-whatsapp {
-                right: 16px;
-                bottom: 16px;
-                min-height: 56px;
-                padding-right: 16px;
             }
         }
     </style>
 </head>
 
 <body>
-    <header class="topbar">
-        <div class="container">
-            <div class="nav-shell" id="site-nav">
-                <a class="brand" href="#inicio">mandaliti<span>.</span></a>
-                <button class="mobile-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <nav class="nav-links" id="menu">
-                    <a href="#inicio">Home</a>
-                    <a href="#sobre">Sobre</a>
-                    <a href="#servicos">Servi&ccedil;os</a>
-                    <a href="#noticias">Not&iacute;cias</a>
-                    <a href="#atendimento">Atendimento</a>
-                    <a href="#contato">Contato</a>
-                </nav>
-                <a class="nav-cta" href="https://wa.me/5511977196953?text=Ola%2C%20quero%20falar%20com%20um%20especialista." target="_blank" rel="noopener noreferrer">Contato</a>
-            </div>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span class="ticker-item">IBOVESPA <span class="up">▲ 0.45%</span></span>
+            <span class="ticker-item">S&P 500 <span class="down">▼ 0.12%</span></span>
+            <span class="ticker-item">NASDAQ <span class="up">▲ 0.88%</span></span>
+            <span class="ticker-item">USD/BRL <span class="down">▼ 0.35%</span></span>
+            <span class="ticker-item">EUR/BRL <span class="up">▲ 0.15%</span></span>
+            <span class="ticker-item">BITCOIN <span class="up">▲ 2.45%</span></span>
+            <span class="ticker-item">PETR4 <span class="up">▲ 1.12%</span></span>
+            <span class="ticker-item">VALE3 <span class="down">▼ 0.85%</span></span>
+            <span class="ticker-item">IBOVESPA <span class="up">▲ 0.45%</span></span>
+            <span class="ticker-item">S&P 500 <span class="down">▼ 0.12%</span></span>
+            <span class="ticker-item">NASDAQ <span class="up">▲ 0.88%</span></span>
+            <span class="ticker-item">USD/BRL <span class="down">▼ 0.35%</span></span>
+            <span class="ticker-item">EUR/BRL <span class="up">▲ 0.15%</span></span>
+            <span class="ticker-item">BITCOIN <span class="up">▲ 2.45%</span></span>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">
+                <span class="logo-dot"></span> Notícias <span>Finanças</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Mercados</a></li>
+                    <li><a href="#">Economia</a></li>
+                    <li><a href="#">Empresas</a></li>
+                    <li><a href="#">Cripto</a></li>
+                </ul>
+                <a href="#" class="btn-subscribe">Assinar Grátis</a>
+            </nav>
         </div>
     </header>
 
     <main>
-        <section class="hero" id="inicio">
-            <div class="container">
-                <div class="hero-grid">
-                    <div>
-                        <span class="eyebrow">mandaliti</span>
-                        <h1>Intelig&ecirc;ncia para voc&ecirc; ir <span>al&eacute;m.</span></h1>
-                        <p>Uma opera&ccedil;&atilde;o especializada em servi&ccedil;os financeiros e atendimento que une experi&ecirc;ncia, agilidade e solu&ccedil;&otilde;es digitais para levar voc&ecirc; aos melhores resultados.</p>
-                        <div class="hero-actions">
-                            <a class="hero-primary" href="#servicos">Nossos Servi&ccedil;os</a>
-                            <a class="hero-secondary" href="https://wa.me/5511977196953?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista." target="_blank" rel="noopener noreferrer">Fale com um especialista</a>
-                        </div>
-                    </div>
-                    <article class="hero-card" aria-label="Destaque de atendimento financeiro">
-                        <div class="hero-card-content">
-                            <span class="hero-card-kicker">Mandaliti</span>
-                            <h2>Atendimento financeiro com estrutura moderna, objetiva e confi&aacute;vel.</h2>
-                            <p>Uma presen&ccedil;a digital preparada para comunicar seguran&ccedil;a, acolhimento e solu&ccedil;&otilde;es de negocia&ccedil;&atilde;o com clareza.</p>
-                            <a class="hero-card-link" href="#sobre">Conhe&ccedil;a a opera&ccedil;&atilde;o</a>
-                        </div>
-                    </article>
-                </div>
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">Últimas Notícias</h1>
+                <p class="page-subtitle">Acompanhe as movimentações financeiras em tempo real.</p>
             </div>
-        </section>
-
-        <section class="section services" id="servicos">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-kicker">Mandaliti</span>
-                    <h2>Atua&ccedil;&atilde;o Especializada</h2>
-                    <p>Uma estrutura clara para apresentar servi&ccedil;os com objetividade, seguran&ccedil;a e melhor leitura da proposta de valor.</p>
-                    <div class="section-divider"></div>
-                </div>
-                <div class="service-grid">
-                    <article class="service-card">
-                        <div class="service-icon">$</div>
-                        <h3>Recupera&ccedil;&atilde;o de Cr&eacute;dito</h3>
-                        <p>Estrat&eacute;gias eficientes para regulariza&ccedil;&atilde;o financeira, recupera&ccedil;&atilde;o de cr&eacute;dito e negocia&ccedil;&atilde;o com atendimento seguro.</p>
-                        <a class="service-link" href="https://wa.me/5511977196953?text=Quero%20saber%20mais%20sobre%20recupera%C3%A7%C3%A3o%20de%20cr%C3%A9dito." target="_blank" rel="noopener noreferrer">Saiba Mais</a>
-                    </article>
-                    <article class="service-card">
-                        <div class="service-icon">II</div>
-                        <h3>Boleto Atualizado</h3>
-                        <p>Emiss&atilde;o r&aacute;pida da 2&ordf; via do seu boleto com total seguran&ccedil;a digital.</p>
-                        <a class="service-link" href="https://wa.me/5511977196953?text=Preciso%20de%20boleto%20atualizado." target="_blank" rel="noopener noreferrer">Solicitar</a>
-                    </article>
-                    <article class="service-card">
-                        <div class="service-icon">#</div>
-                        <h3>Quita&ccedil;&atilde;o de Contrato</h3>
-                        <p>C&aacute;lculos para liquida&ccedil;&atilde;o total com condi&ccedil;&otilde;es exclusivas de negocia&ccedil;&atilde;o.</p>
-                        <a class="service-link" href="https://wa.me/5511977196953?text=Quero%20consultar%20quitacao%20de%20contrato." target="_blank" rel="noopener noreferrer">Consultar</a>
-                    </article>
-                    <article class="service-card">
-                        <div class="service-icon">@</div>
-                        <h3>Outros Servi&ccedil;os</h3>
-                        <p>Atendimento completo para acordos, atualiza&ccedil;&atilde;o cadastral, suporte financeiro e orienta&ccedil;&otilde;es ao cliente.</p>
-                        <a class="service-link" href="https://wa.me/5511977196953?text=Preciso%20falar%20sobre%20outros%20servi%C3%A7os." target="_blank" rel="noopener noreferrer">Falar Agora</a>
-                    </article>
-                </div>
+            <div class="live-indicator">
+                <span class="pulse-dot"></span> Ao Vivo
             </div>
-        </section>
+        </div>
 
-        <section class="section" id="sobre">
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-panel">
-                        <div class="section-header left">
-                            <span class="section-kicker">Sobre</span>
-                            <h2>mandaliti.</h2>
-                            <p>O Mandaliti est&aacute; preparado para atender a demanda e as expectativas do cliente. Entendemos e valorizamos a import&acirc;ncia da clareza, da agilidade e da pessoalidade no atendimento financeiro.</p>
-                        </div>
-                        <div class="about-list">
-                            <div class="about-item">
-                                <div class="about-item-mark">01</div>
-                                <div>
-                                    <strong>Tradi&ccedil;&atilde;o e inova&ccedil;&atilde;o</strong>
-                                    <span>Uma comunica&ccedil;&atilde;o que combina credibilidade, clareza e uma experi&ecirc;ncia digital atual.</span>
-                                </div>
-                            </div>
-                            <div class="about-item">
-                                <div class="about-item-mark">02</div>
-                                <div>
-                                    <strong>Solu&ccedil;&otilde;es com tecnologia</strong>
-                                    <span>Estrutura preparada para apresentar servi&ccedil;os, acordos e canais de contato com clareza, organiza&ccedil;&atilde;o e agilidade.</span>
-                                </div>
-                            </div>
-                            <div class="about-item">
-                                <div class="about-item-mark">03</div>
-                                <div>
-                                    <strong>Atendimento personalizado</strong>
-                                    <span>O site refor&ccedil;a proximidade, confian&ccedil;a e direciona o visitante para o canal certo de negocia&ccedil;&atilde;o.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="about-visual">
-                        <div class="about-badge">
-                            <strong>Intelig&ecirc;ncia para voc&ecirc; ir al&eacute;m</strong>
-                            <span>Uma linguagem visual mais s&oacute;lida para transmitir seguran&ccedil;a e sofistica&ccedil;&atilde;o.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div id="loading" class="status-container">
+            <div class="loader"></div>
+            <h3 style="color: var(--primary-color); font-family: var(--font-display); margin-bottom: 0.5rem;">
+                Sincronizando Mercado</h3>
+            <p id="loading-status" class="loading-text-sub">Conectando aos terminais de dados...</p>
+        </div>
 
-        <section class="section metrics" id="noticias">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-kicker">Not&iacute;cias</span>
-                    <h2>Informa&ccedil;&otilde;es sobre quita&ccedil;&atilde;o, boleto e renegocia&ccedil;&atilde;o com mais clareza</h2>
-                    <p>Essa &aacute;rea foi organizada para facilitar o acesso a assuntos como segunda via, acordos, pagamento e regulariza&ccedil;&atilde;o financeira.</p>
-                </div>
-                <div class="news-grid">
-                    <article class="news-card">
-                        <div class="news-media">
-                            <img src="images/institutional-support.png" alt="Atendimento especializado Mandaliti">
-                        </div>
-                        <div class="news-body">
-                            <span class="news-tag">Atualiza&ccedil;&otilde;es</span>
-                            <h3>Comunicados sobre atendimento, canais digitais e condi&ccedil;&otilde;es de regulariza&ccedil;&atilde;o</h3>
-                            <p>Espa&ccedil;o preparado para destacar novidades da opera&ccedil;&atilde;o, mensagens importantes ao cliente e melhorias nos canais de suporte.</p>
-                            <a class="news-link" href="#contato">Saiba mais</a>
-                        </div>
-                    </article>
-                    <article class="news-card">
-                        <div class="news-media">
-                            <img src="images/institutional-digital.png" alt="Servi&ccedil;os financeiros digitais Mandaliti">
-                        </div>
-                        <div class="news-body">
-                            <span class="news-tag">Servi&ccedil;os</span>
-                            <h3>Publica&ccedil;&otilde;es sobre recupera&ccedil;&atilde;o, boletos e condi&ccedil;&otilde;es de pagamento</h3>
-                            <p>Bloco pensado para apresentar informa&ccedil;&otilde;es objetivas sobre os servi&ccedil;os mais acessados, com melhor clareza visual e orienta&ccedil;&atilde;o ao cliente.</p>
-                            <a class="news-link" href="#servicos">Ver servi&ccedil;os</a>
-                        </div>
-                    </article>
-                    <article class="news-card">
-                        <div class="news-media">
-                            <img src="images/institutional-handshake.png" alt="Relacionamento e acordos com clientes Mandaliti">
-                        </div>
-                        <div class="news-body">
-                            <span class="news-tag">Relacionamento</span>
-                            <h3>Estrutura flex&iacute;vel para orienta&ccedil;&otilde;es, avisos e novos destaques de atendimento</h3>
-                            <p>O site passa a ter uma base melhor para evoluir com campanhas, conte&uacute;do informativo e refor&ccedil;o de confian&ccedil;a nos servi&ccedil;os.</p>
-                            <a class="news-link" href="#sobre">Conhecer mais</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
+        <div id="error-container" class="status-container hidden">
+            <svg style="width: 48px; height: 48px; color: #ef4444; margin: 0 auto 1.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <h3 style="color: var(--primary-color); font-family: var(--font-display); margin-bottom: 1rem;">Serviço Indisponível
+            </h3>
+            <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">Nossos terminais não conseguiram sincronizar com as fontes de notícias no momento. Tente novamente em alguns minutos.</p>
+        </div>
 
-        <section class="section showcase" id="destaques">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-kicker">Destaques</span>
-                    <h2>Solu&ccedil;&otilde;es para boleto, acordos e quita&ccedil;&atilde;o em destaque</h2>
-                    <p>Um bloco visual pensado para refor&ccedil;ar canais de atendimento, negocia&ccedil;&atilde;o de d&eacute;bitos, regulariza&ccedil;&atilde;o e suporte financeiro.</p>
-                </div>
-                <div class="showcase-grid">
-                    <article class="showcase-feature">
-                        <img src="images/institutional-hero.png" alt="Equipe institucional Mandaliti em reuni&atilde;o">
-                        <div class="showcase-content">
-                            <span class="news-tag">Atendimento</span>
-                            <h3>Uma experi&ecirc;ncia digital mais forte para apresentar suporte, seguran&ccedil;a e proximidade</h3>
-                            <p>Esse destaque principal funciona como uma &aacute;rea para campanhas de negocia&ccedil;&atilde;o, atualiza&ccedil;&atilde;o de canais e refor&ccedil;o de atendimento.</p>
-                            <a class="news-link" href="#contato">Fale com a equipe</a>
-                        </div>
-                    </article>
-                    <div class="showcase-side">
-                        <article class="showcase-card">
-                            <img src="images/institutional-digital.png" alt="Tecnologia e apoio financeiro">
-                            <div class="showcase-card-body">
-                                <span class="news-tag">Tecnologia</span>
-                                <h4>Solu&ccedil;&otilde;es com apoio digital e mais fluidez no atendimento</h4>
-                                <p>Bloco ideal para refor&ccedil;ar canais online, praticidade e estrutura operacional.</p>
-                            </div>
-                        </article>
-                        <article class="showcase-card">
-                            <img src="images/institutional-consulting.png" alt="Equipe e relacionamento com clientes">
-                            <div class="showcase-card-body">
-                                <span class="news-tag">Equipe</span>
-                                <h4>Pessoalidade no atendimento e no suporte ao cliente</h4>
-                                <p>Um segundo destaque para humanizar a marca e apoiar a narrativa de acolhimento e resolu&ccedil;&atilde;o.</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-band" id="atendimento">
-            <div class="container">
-                <div class="cta-panel">
-                    <div>
-                        <h2>Atendimento</h2>
-                        <p>Espa&ccedil;o para destacar canais de contato, suporte especializado, negocia&ccedil;&otilde;es e orienta&ccedil;&otilde;es com a mesma identidade visual do restante do site.</p>
-                    </div>
-                    <a class="cta-button" href="https://wa.me/5511977196953?text=Ol%C3%A1%2C%20quero%20falar%20sobre%20atendimento." target="_blank" rel="noopener noreferrer">Fale com um especialista</a>
-                </div>
-            </div>
-        </section>
-
+        <div id="content-container" class="hidden"></div>
     </main>
 
-    <footer class="footer" id="contato">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <div class="footer-brand">mandaliti<span>.</span></div>
-                    <p>O Mandaliti est&aacute; preparado para atender a demanda e as expectativas do cliente. Entendemos e valorizamos a import&acirc;ncia da pessoalidade, da clareza e da agilidade nos servi&ccedil;os financeiros e no atendimento.</p>
-                </div>
-                <div>
-                    <h3 class="footer-title">Links</h3>
-                    <div class="footer-links">
-                        <a href="#sobre">Sobre</a>
-                        <a href="#servicos">Servi&ccedil;os</a>
-                        <a href="javascript:void(0)">Privacidade</a>
-                        <a href="javascript:void(0)">sitemap</a>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="footer-title">Contato</h3>
-                    <div class="footer-contact">
-                        <a href="mailto:contato@mandaliti.com.br">contato@mandaliti.com.br</a>
-                    </div>
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <span class="logo-dot"></span> Notícias
+                    <span>Finanças</span>
+                </a>
+                <p>O portal de inteligência de mercado mais ágil do Brasil. Análises profundas, cotações em tempo real e as notícias que movem a economia mundial.</p>
+            </div>
+            <div class="footer-col" style="justify-self: center;">
+                <h3>Acesso Rápido</h3>
+                <ul>
+                    <li><a href="#">Destaques</a></li>
+                    <li><a href="#">Fechamento de Mercado</a></li>
+                    <li><a href="#">Carteiras Recomendadas</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Organização</h3>
+                <div class="org-details">
+                    <p><strong>ASSOCIACAO EDUCACIONAL LPA</strong><br>CNPJ: 21.394.691/0001-25</p>
+                    <p><strong>Endereço da organização</strong><br>R DO ROSARIO, 313<br>VILA CAMARGOS<br>GUARULHOS - SP<br>07111-080<br>Brasil</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                &copy; 2026 mandaliti. Todos os direitos reservados. Ambiente 100% Seguro.
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span>. Todos os direitos reservados.</p>
+            <div style="display: flex; gap: 1rem;">
+                <a href="#" style="color: #64748b; text-decoration: none;">X (Twitter)</a>
+                <a href="#" style="color: #64748b; text-decoration: none;">LinkedIn</a>
+                <a href="#" style="color: #64748b; text-decoration: none;">Instagram</a>
             </div>
         </div>
     </footer>
 
-    <a class="floating-whatsapp" href="https://wa.me/5511977196953?text=Ol%C3%A1%2C%20quero%20falar%20com%20voc%C3%AAs." target="_blank" rel="noopener noreferrer" aria-label="Fale Conosco no WhatsApp">
-        <span class="floating-whatsapp-icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" role="img">
-                <path d="M19.11 17.34c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.66.15-.2.3-.76.97-.93 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.66-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.66-1.6-.91-2.19-.24-.58-.49-.5-.66-.5h-.57c-.2 0-.52.08-.79.37-.27.3-1.04 1.01-1.04 2.46 0 1.45 1.07 2.86 1.22 3.06.15.2 2.09 3.19 5.06 4.47.71.31 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.08-.12-.27-.2-.57-.35Z"></path>
-                <path d="M27.27 4.69A15.77 15.77 0 0 0 16.03 0C7.3 0 .2 7.1.2 15.84c0 2.79.73 5.51 2.1 7.9L0 32l8.48-2.23a15.8 15.8 0 0 0 7.55 1.92h.01c8.73 0 15.83-7.11 15.83-15.84 0-4.23-1.65-8.21-4.6-11.16Zm-11.23 24.3h-.01a13.2 13.2 0 0 1-6.73-1.84l-.48-.29-5.03 1.32 1.34-4.9-.31-.5a13.13 13.13 0 0 1-2.03-7c0-7.25 5.9-13.14 13.16-13.14 3.51 0 6.82 1.36 9.3 3.85a13.05 13.05 0 0 1 3.84 9.29c0 7.25-5.9 13.15-13.15 13.15Z"></path>
-            </svg>
-        </span>
-        <span>Fale Conosco</span>
-    </a>
-
     <script>
-        (function() {
-            var nav = document.getElementById("site-nav");
-            var toggle = document.querySelector(".mobile-toggle");
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
 
-            if (!nav || !toggle) {
-                return;
+            const contentContainer = document.getElementById('content-container');
+            const loading = document.getElementById('loading');
+            const loadingStatus = document.getElementById('loading-status');
+            const errorContainer = document.getElementById('error-container');
+
+            const placeholderImg = 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800&h=500';
+
+            const rssSources = [{
+                name: 'G1 Economia',
+                url: 'https://g1.globo.com/rss/g1/economia/'
+            }, {
+                name: 'Money Times',
+                url: 'https://www.moneytimes.com.br/feed/'
+            }, {
+                name: 'Investing Brasil',
+                url: 'https://br.investing.com/rss/news_25.rss'
+            }, {
+                name: 'Jovem Pan',
+                url: 'https://jovempan.com.br/noticias/economia/feed'
+            }, {
+                name: 'InfoMoney',
+                url: 'https://www.infomoney.com.br/feed/'
+            }];
+
+            async function fetchNewsWithFallback() {
+                for (let i = 0; i < rssSources.length; i++) {
+                    const source = rssSources[i];
+                    loadingStatus.textContent = `Sincronizando via Terminal: ${source.name}...`;
+
+                    // Retornando ao rss2json oficial, mas agora blindado com Timeout de 8s nativo para não travar
+                    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(source.url)}`;
+
+                    try {
+                        const controller = new AbortController();
+                        const timeoutId = setTimeout(() => controller.abort(), 8000);
+
+                        const response = await fetch(apiUrl, {
+                            signal: controller.signal
+                        });
+                        clearTimeout(timeoutId);
+
+                        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+                        const data = await response.json();
+
+                        if (data.status === 'ok' && data.items && data.items.length > 0) {
+                            loading.classList.add('hidden');
+                            contentContainer.classList.remove('hidden');
+
+                            const sourceInfo = document.createElement('div');
+                            sourceInfo.style.marginBottom = '2.5rem';
+                            sourceInfo.style.fontSize = '0.9rem';
+                            sourceInfo.style.color = 'var(--text-muted)';
+                            sourceInfo.style.display = 'flex';
+                            sourceInfo.style.alignItems = 'center';
+                            sourceInfo.style.gap = '8px';
+                            sourceInfo.innerHTML = `
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                Fonte de dados ativa: <strong>${source.name}</strong>
+                            `;
+                            contentContainer.appendChild(sourceInfo);
+
+                            processAndRender(data.items, source.name);
+                            return;
+                        } else {
+                            console.warn(`Fonte ${source.name} retornou erro interno da API:`, data.message);
+                            continue;
+                        }
+                    } catch (error) {
+                        console.warn(`Terminal ${source.name} indisponível: ${error.message}`);
+                    }
+
+                    if (i === rssSources.length - 1) {
+                        loading.classList.add('hidden');
+                        errorContainer.classList.remove('hidden');
+                    }
+                }
             }
 
-            toggle.addEventListener("click", function() {
-                var expanded = toggle.getAttribute("aria-expanded") === "true";
-                toggle.setAttribute("aria-expanded", String(!expanded));
-                nav.classList.toggle("is-open");
-            });
-        }());
+            function stripHtml(html) {
+                const tmp = document.createElement("DIV");
+                tmp.innerHTML = html;
+                return tmp.textContent || tmp.innerText || "";
+            }
+
+            function processAndRender(articles, sourceName) {
+                const groupedNews = {};
+
+                articles.forEach(article => {
+                    let category = (article.categories && article.categories.length > 0) ?
+                        article.categories[0] :
+                        'Mercados';
+
+                    category = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+                    if (category.length > 20) category = 'Finanças';
+
+                    if (!groupedNews[category]) groupedNews[category] = [];
+                    groupedNews[category].push(article);
+                });
+
+                for (const [category, items] of Object.entries(groupedNews)) {
+                    if (items.length < 1) continue;
+
+                    const categoryItems = items.slice(0, 6);
+                    const section = document.createElement('section');
+                    section.className = 'category-section';
+
+                    const header = document.createElement('div');
+                    header.className = 'section-header';
+
+                    const title = document.createElement('h2');
+                    title.className = 'section-title';
+                    title.textContent = category;
+
+                    header.appendChild(title);
+                    section.appendChild(header);
+
+                    const grid = document.createElement('div');
+                    grid.className = 'news-grid';
+
+                    categoryItems.forEach(article => {
+                        const card = document.createElement('a');
+                        card.className = 'card';
+                        card.href = article.link;
+                        card.target = '_blank';
+                        card.rel = 'noopener noreferrer';
+
+                        const desc = article.description || '';
+                        let imageUrl = placeholderImg;
+                        if (article.enclosure && article.enclosure.link) {
+                            imageUrl = article.enclosure.link;
+                        } else if (article.thumbnail) {
+                            imageUrl = article.thumbnail;
+                        } else if (desc) {
+                            const imgMatch = desc.match(/<img[^>]+src="([^">]+)"/);
+                            if (imgMatch && imgMatch[1]) imageUrl = imgMatch[1];
+                        }
+
+                        const pubDate = new Date(article.pubDate);
+
+                        let dateString = 'Recente';
+                        if (!isNaN(pubDate)) {
+                            const now = new Date();
+                            const diffHours = Math.floor((now - pubDate) / (1000 * 60 * 60));
+
+                            if (diffHours < 1) {
+                                dateString = 'Agora mesmo';
+                            } else if (diffHours < 24) {
+                                dateString = `Há ${diffHours} ${diffHours === 1 ? 'hora' : 'horas'}`;
+                            } else {
+                                dateString = new Intl.DateTimeFormat('pt-BR', {
+                                    day: '2-digit',
+                                    month: 'short'
+                                }).format(pubDate);
+                            }
+                        }
+
+                        const cleanText = stripHtml(desc);
+                        const truncatedDesc = cleanText.length > 120 ? cleanText.substring(0, 120) + '...' : cleanText;
+
+                        card.innerHTML = `
+                            <div class="card-img-container">
+                                <div class="card-category-badge">${category}</div>
+                                <img src="${imageUrl}" alt="" class="card-img" loading="lazy" onerror="this.src='${placeholderImg}'">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-date">
+                                    <svg width="14" height="14" fill="none" class="text-muted" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    ${dateString}
+                                </div>
+                                <h3 class="card-title">${article.title}</h3>
+                                <p class="card-desc">${truncatedDesc}</p>
+                                <div class="card-footer">
+                                    <span class="card-source">${sourceName}</span>
+                                    <div class="card-btn">
+                                        Ler mais
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        grid.appendChild(card);
+                    });
+
+                    section.appendChild(grid);
+                    contentContainer.appendChild(section);
+                }
+            }
+
+            fetchNewsWithFallback();
+        });
     </script>
 </body>
 
