@@ -1,934 +1,881 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notícias | Portal Financeiro</title>
+    <title>ARCM Online | Financiamentos e Seguros</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-         :root {
-            /* Premium Finance Color Palette */
-            --bg-body: #f4f7f6;
-            --bg-card: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --primary-color: #020617;
-            /* Very deep slate */
-            --accent-green: #10b981;
-            /* Emerald */
-            --accent-green-hover: #059669;
-            --accent-blue: #3b82f6;
-            --border-light: #e2e8f0;
-            --font-body: 'Inter', sans-serif;
-            --font-display: 'Plus Jakarta Sans', sans-serif;
-            --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.04);
-            --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
-            --shadow-lg: 0 12px 24px rgba(15, 23, 42, 0.08);
-            --radius-md: 12px;
-            --radius-lg: 20px;
+        :root {
+            --navy: #223a8f;
+            --navy-deep: #11245f;
+            --navy-soft: #3150b7;
+            --white: #ffffff;
+            --paper: #f6f7fb;
+            --ink: #111827;
+            --muted: #67728a;
+            --line: rgba(34, 58, 143, 0.12);
+            --shadow: 0 18px 40px rgba(22, 39, 95, 0.12);
+            --radius-lg: 28px;
+            --radius-md: 20px;
+            --radius-sm: 14px;
+            --container: 1280px;
         }
-        
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: var(--font-body);
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            font-family: "Manrope", sans-serif;
+            color: var(--ink);
+            background: var(--white);
+            line-height: 1.5;
         }
-        /* Ticker Top Bar */
-        
-        .ticker-wrap {
-            width: 100%;
-            overflow: hidden;
-            background-color: var(--primary-color);
-            color: #f8fafc;
-            padding: 8px 0;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            z-index: 101;
+
+        a {
+            color: inherit;
+            text-decoration: none;
         }
-        
-        .ticker {
-            display: inline-block;
-            white-space: nowrap;
-            padding-right: 100%;
-            animation: ticker 30s linear infinite;
+
+        img {
+            max-width: 100%;
+            display: block;
         }
-        
-        .ticker-item {
-            display: inline-block;
-            padding: 0 2rem;
-            color: #cbd5e1;
+
+        .container {
+            width: min(calc(100% - 48px), var(--container));
+            margin: 0 auto;
         }
-        
-        .ticker-item span.up {
-            color: var(--accent-green);
-        }
-        
-        .ticker-item span.down {
-            color: #ef4444;
-        }
-        
-        @keyframes ticker {
-            0% {
-                transform: translate3d(0, 0, 0);
-            }
-            100% {
-                transform: translate3d(-100%, 0, 0);
-            }
-        }
-        /* Header */
-        
-        header {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-light);
+
+        .topbar {
             position: sticky;
             top: 0;
-            z-index: 100;
-            transition: all 0.3s ease;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(17, 24, 39, 0.06);
         }
-        
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.25rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            letter-spacing: -0.02em;
-        }
-        
-        .logo span {
-            color: var(--accent-green);
-        }
-        
-        .logo-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent-green);
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 4px;
-        }
-        
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-        
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: color 0.2s ease;
-        }
-        
-        nav a:hover,
-        nav a.active {
-            color: var(--primary-color);
-        }
-        
-        .btn-subscribe {
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background 0.2s, transform 0.2s;
-        }
-        
-        .btn-subscribe:hover {
-            background-color: var(--text-muted);
-            color: var(--primary-color);
-            transform: translateY(-1px);
-        }
-        /* Main Content */
-        
-        main {
-            flex: 1;
-            padding: 2rem 5% 5rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-        }
-        
-        .page-header {
-            margin-bottom: 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid var(--border-light);
-        }
-        
-        .page-title {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-        }
-        
-        .page-subtitle {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-top: 0.5rem;
-        }
-        
-        .live-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--accent-green-hover);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent-green);
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-            animation: pulse 1.5s infinite;
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-            }
-            70% {
-                transform: scale(1);
-                box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
-            }
-            100% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-            }
-        }
-        /* Status Containers */
-        
-        .status-container {
-            text-align: center;
-            padding: 6rem 0;
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .loader {
-            width: 48px;
-            height: 48px;
-            border: 3px solid var(--border-light);
-            border-bottom-color: var(--accent-green);
-            border-radius: 50%;
-            display: inline-block;
-            box-sizing: border-box;
-            animation: rotation 1s linear infinite;
-            margin-bottom: 1.5rem;
-        }
-        
-        @keyframes rotation {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-        
-        .hidden {
-            display: none !important;
-        }
-        
-        .loading-text-sub {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-            height: 20px;
-        }
-        /* Grid */
-        
-        .category-section {
-            margin-bottom: 4rem;
-        }
-        
-        .section-header {
+
+        .nav {
+            min-height: 80px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 2rem;
+            gap: 24px;
         }
-        
-        .section-title {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            position: relative;
-            padding-left: 1rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .section-title::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            height: 100%;
-            width: 4px;
-            background-color: var(--accent-green);
-            border-radius: 4px;
-        }
-        
-        .news-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        
-        @media (min-width: 768px) {
-            .news-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .news-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        /* Modern Card Design */
-        
-        .card {
-            background-color: var(--bg-card);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.03);
-            box-shadow: var(--shadow-sm);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        .brand {
             display: flex;
             flex-direction: column;
-            cursor: pointer;
-            position: relative;
-            text-decoration: none;
-        }
-        
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(0, 0, 0, 0.08);
-        }
-        
-        .card-img-container {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            background-color: var(--border-light);
-            position: relative;
-        }
-        
-        .card-category-badge {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--primary-color);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+            gap: 3px;
+            color: var(--navy);
+            letter-spacing: 0.24em;
             text-transform: uppercase;
-            z-index: 2;
-            backdrop-filter: blur(4px);
         }
-        
-        .card-img {
+
+        .brand strong {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.28em;
+        }
+
+        .brand span {
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .menu a {
+            color: var(--navy);
+            font-weight: 700;
+            font-size: 0.98rem;
+        }
+
+        .client-button {
+            padding: 13px 18px;
+            background: var(--navy);
+            border-radius: 10px;
+            color: var(--white);
+            box-shadow: 0 10px 22px rgba(34, 58, 143, 0.18);
+        }
+
+        .hero {
+            position: relative;
+            padding: 0 0 34px;
+            background:
+                radial-gradient(circle at top left, rgba(49, 80, 183, 0.08), transparent 30%),
+                linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+        }
+
+        .hero-stage {
+            position: relative;
+            overflow: hidden;
+            min-height: 700px;
+            border-radius: 0 0 26px 26px;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.7s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .slide::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(8, 18, 48, 0.72) 0%, rgba(8, 18, 48, 0.48) 36%, rgba(8, 18, 48, 0.15) 100%);
+        }
+
+        .slide img {
+            width: 100%;
+            height: 700px;
+            object-fit: cover;
+        }
+
+        .hero-copy {
+            position: absolute;
+            top: 50%;
+            left: min(78px, 4vw);
+            transform: translateY(-50%);
+            z-index: 2;
+            color: var(--white);
+            width: min(560px, calc(100% - 90px));
+        }
+
+        .hero-copy p.eyebrow {
+            font-size: 0.92rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.82);
+            margin-bottom: 18px;
+        }
+
+        .hero-copy h1 {
+            font-size: clamp(2.4rem, 4vw, 4.7rem);
+            line-height: 0.98;
+            margin-bottom: 22px;
+            font-weight: 800;
+        }
+
+        .hero-copy .lead {
+            font-size: clamp(1.08rem, 1.6vw, 1.46rem);
+            max-width: 48ch;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 32px;
+        }
+
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 220px;
+            padding: 17px 28px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(255, 255, 255, 0.34);
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover,
+        .service-card:hover,
+        .quick-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .hero-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--white);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+        }
+
+        .hero-arrow.left {
+            left: 24px;
+        }
+
+        .hero-arrow.right {
+            right: 24px;
+        }
+
+        .hero-arrow svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        .hero-dots {
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 4;
+        }
+
+        .dot {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            border: 0;
+            background: rgba(255, 255, 255, 0.48);
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: var(--navy);
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.22);
+        }
+
+        .floating-a11y {
+            position: fixed;
+            right: 16px;
+            top: 200px;
+            z-index: 30;
+            overflow: hidden;
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+        }
+
+        .floating-a11y a {
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            background: var(--navy);
+            color: var(--white);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+        }
+
+        .section {
+            padding: 86px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 24px;
+            margin-bottom: 34px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 3vw, 3rem);
+            line-height: 1;
+            color: #061331;
+        }
+
+        .section-header p {
+            max-width: 620px;
+            color: var(--muted);
+            font-size: 1.03rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            background: var(--navy-deep);
+        }
+
+        .service-card {
+            position: relative;
+            min-height: 650px;
+            padding: 44px;
+            display: flex;
+            align-items: flex-end;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.25s ease;
+            isolation: isolate;
+        }
+
+        .service-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(9, 20, 57, 0.16), rgba(10, 21, 60, 0.76));
+            z-index: -1;
+        }
+
+        .service-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(34, 58, 143, 0.3), transparent 58%);
+            z-index: -1;
+        }
+
+        .service-content {
+            max-width: 420px;
+            color: var(--white);
+        }
+
+        .service-content h3 {
+            font-size: clamp(2rem, 2.8vw, 3rem);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .service-content p {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 28px;
+        }
+
+        .service-content .cta {
+            display: inline-flex;
+            min-width: 260px;
+            justify-content: center;
+            padding: 16px 22px;
+            background: var(--white);
+            color: var(--navy);
+            border-radius: 12px;
+            font-weight: 700;
+        }
+
+        .client-panel {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .client-visual {
+            background: #f3f4f8;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            min-height: 520px;
+        }
+
+        .client-visual img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        .card:hover .card-img {
-            transform: scale(1.05);
+
+        .client-copy h2 {
+            font-size: clamp(2.1rem, 3vw, 3.6rem);
+            line-height: 1.02;
+            color: #07152f;
+            margin-bottom: 14px;
         }
-        
-        .card-content {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
+
+        .client-copy p {
+            color: var(--muted);
+            font-size: 1.08rem;
+            max-width: 56ch;
+            margin-bottom: 30px;
         }
-        
-        .card-date {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 0.75rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+
+        .quick-label {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #67728a;
+            margin-bottom: 18px;
+            text-transform: uppercase;
         }
-        
-        .card-title {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            transition: color 0.2s;
-        }
-        
-        .card:hover .card-title {
-            color: var(--accent-blue);
-        }
-        
-        .card-desc {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-            line-height: 1.6;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--border-light);
-            padding-top: 1.25rem;
-            margin-top: auto;
-        }
-        
-        .card-source {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-        
-        .card-btn {
-            color: var(--accent-blue);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        
-        .card-btn svg {
-            width: 16px;
-            height: 16px;
-            transition: transform 0.2s;
-        }
-        
-        .card:hover .card-btn svg {
-            transform: translateX(4px);
-        }
-        /* Footer */
-        
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 5rem 5% 2rem;
-            margin-top: auto;
-        }
-        
-        .footer-grid {
-            max-width: 1400px;
-            margin: 0 auto;
+
+        .quick-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 4rem;
-            margin-bottom: 4rem;
-        }
-        
-        @media (min-width: 768px) {
-            .footer-grid {
-                grid-template-columns: 2fr 1fr 1fr;
-            }
-        }
-        
-        .footer-brand {
-            max-width: 320px;
-        }
-        
-        .footer-brand .logo {
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-brand p {
-            color: #94a3b8;
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-        
-        .footer-col h3 {
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: white;
-            font-weight: 600;
-        }
-        
-        .footer-col ul {
-            list-style: none;
-        }
-        
-        .footer-col ul li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-col ul a {
-            text-decoration: none;
-            color: #94a3b8;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
-        
-        .footer-col ul a:hover {
-            color: white;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
         }
 
-        .org-details {
-            color: #94a3b8;
-            font-size: 0.95rem;
-            line-height: 1.8;
+        .quick-card {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            min-height: 128px;
+            padding: 24px 26px;
+            box-shadow: 0 14px 30px rgba(17, 24, 39, 0.06);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .org-details p + p {
-            margin-top: 1rem;
+        .quick-card:hover {
+            box-shadow: 0 18px 36px rgba(17, 24, 39, 0.1);
         }
 
-        .org-details strong {
-            color: white;
+        .quick-card svg {
+            width: 28px;
+            height: 28px;
+            color: var(--navy);
+            margin-bottom: 18px;
         }
 
-        .newsletter-form {
+        .quick-card h3 {
+            color: var(--navy);
+            font-size: 1.28rem;
+            line-height: 1.25;
+        }
+
+        .notice-band {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .notice-wrap {
+            min-height: 96px;
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .newsletter-form input {
-            padding: 0.8rem 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            outline: none;
-            font-family: var(--font-body);
-            transition: border-color 0.2s;
-        }
-        
-        .newsletter-form input:focus {
-            border-color: var(--accent-green);
-        }
-        
-        .newsletter-form button {
-            background-color: var(--accent-green);
-            color: white;
-            border: none;
-            padding: 0.8rem 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            font-family: var(--font-body);
-            transition: background 0.2s, transform 0.2s;
-        }
-        
-        .newsletter-form button:hover {
-            background-color: var(--accent-green-hover);
-            transform: translateY(-1px);
-        }
-        
-        .footer-bottom {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #64748b;
-            font-size: 0.85rem;
-            flex-wrap: wrap;
-            gap: 1rem;
+            justify-content: space-between;
+            gap: 18px;
         }
-        
-        @media (max-width: 768px) {
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
+
+        .notice-wrap h3 {
+            font-size: clamp(1.55rem, 2vw, 2.2rem);
+        }
+
+        .notice-wrap p {
+            color: rgba(255, 255, 255, 0.78);
+            max-width: 680px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            padding: 28px;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: linear-gradient(180deg, #ffffff, #f8faff);
+            box-shadow: 0 15px 34px rgba(17, 24, 39, 0.05);
+        }
+
+        .info-card h3 {
+            color: #07152f;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .info-card p {
+            color: var(--muted);
+        }
+
+        footer {
+            padding: 34px 0 56px;
+            border-top: 1px solid rgba(17, 24, 39, 0.08);
+            background: #fbfcff;
+        }
+
+        .footer-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-row p,
+        .footer-row a {
+            color: #5f6d87;
+            font-size: 0.98rem;
+        }
+
+        @media (max-width: 1100px) {
+            .client-panel {
+                grid-template-columns: 1fr;
             }
-            .page-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
+
+            .service-card {
+                min-height: 560px;
             }
-            nav {
+        }
+
+        @media (max-width: 900px) {
+            .menu {
                 display: none;
+            }
+
+            .hero-stage,
+            .slide img {
+                min-height: 620px;
+                height: 620px;
+            }
+
+            .services-grid,
+            .quick-grid,
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                min-height: 460px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                width: min(calc(100% - 28px), var(--container));
+            }
+
+            .nav {
+                min-height: 72px;
+            }
+
+            .brand strong {
+                font-size: 1.1rem;
+            }
+
+            .hero-stage,
+            .slide img {
+                min-height: 560px;
+                height: 560px;
+                border-radius: 0 0 22px 22px;
+            }
+
+            .hero-copy {
+                left: 20px;
+                width: calc(100% - 40px);
+            }
+
+            .hero-copy h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-copy .lead {
+                font-size: 1rem;
+            }
+
+            .cta-row,
+            .btn-primary,
+            .btn-secondary,
+            .service-content .cta {
+                width: 100%;
+            }
+
+            .hero-arrow {
+                display: none;
+            }
+
+            .section {
+                padding: 64px 0;
+            }
+
+            .service-card,
+            .client-visual {
+                min-height: 380px;
+            }
+
+            .floating-a11y {
+                right: 10px;
+                top: auto;
+                bottom: 18px;
             }
         }
     </style>
 </head>
 
 <body>
-
-    <div class="ticker-wrap">
-        <div class="ticker">
-            <span class="ticker-item">IBOVESPA <span class="up">▲ 0.45%</span></span>
-            <span class="ticker-item">S&P 500 <span class="down">▼ 0.12%</span></span>
-            <span class="ticker-item">NASDAQ <span class="up">▲ 0.88%</span></span>
-            <span class="ticker-item">USD/BRL <span class="down">▼ 0.35%</span></span>
-            <span class="ticker-item">EUR/BRL <span class="up">▲ 0.15%</span></span>
-            <span class="ticker-item">BITCOIN <span class="up">▲ 2.45%</span></span>
-            <span class="ticker-item">PETR4 <span class="up">▲ 1.12%</span></span>
-            <span class="ticker-item">VALE3 <span class="down">▼ 0.85%</span></span>
-            <span class="ticker-item">IBOVESPA <span class="up">▲ 0.45%</span></span>
-            <span class="ticker-item">S&P 500 <span class="down">▼ 0.12%</span></span>
-            <span class="ticker-item">NASDAQ <span class="up">▲ 0.88%</span></span>
-            <span class="ticker-item">USD/BRL <span class="down">▼ 0.35%</span></span>
-            <span class="ticker-item">EUR/BRL <span class="up">▲ 0.15%</span></span>
-            <span class="ticker-item">BITCOIN <span class="up">▲ 2.45%</span></span>
-        </div>
-    </div>
-
-    <header>
-        <div class="header-content">
-            <a href="#" class="logo">
-                <span class="logo-dot"></span> Notícias <span>Finanças</span>
+    <header class="topbar">
+        <div class="container nav">
+            <a href="#inicio" class="brand" aria-label="ARCM Online">
+                <strong>ARCM</strong>
+                <span>Financiamentos Online</span>
             </a>
-            <nav>
-                <ul>
-                    <li><a href="#" class="active">Mercados</a></li>
-                    <li><a href="#">Economia</a></li>
-                    <li><a href="#">Empresas</a></li>
-                    <li><a href="#">Cripto</a></li>
-                </ul>
-                <a href="#" class="btn-subscribe">Assinar Grátis</a>
+            <nav class="menu" aria-label="Menu principal">
+                <a href="#marcas">Nossas Marcas</a>
+                <a href="#seguros">Seguros</a>
+                <a class="client-button" href="#sou-cliente">Sou Cliente</a>
+                <a href="#servicos">Menu</a>
+                <a href="#contato" aria-label="Buscar">Buscar</a>
             </nav>
         </div>
     </header>
 
-    <main>
-        <div class="page-header">
-            <div>
-                <h1 class="page-title">Últimas Notícias</h1>
-                <p class="page-subtitle">Acompanhe as movimentações financeiras em tempo real.</p>
+    <aside class="floating-a11y" aria-label="Atalhos de acessibilidade">
+        <a href="#conteudo" aria-label="Ir para conteúdo">⌂</a>
+        <a href="#contato" aria-label="Ir para atendimento">✆</a>
+    </aside>
+
+    <main id="conteudo">
+        <section class="hero" id="inicio" aria-label="Destaques">
+            <div class="hero-stage">
+                <article class="slide active">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=80" alt="SUV branco em destaque">
+                    <div class="hero-copy">
+                        <p class="eyebrow">Sou cliente</p>
+                        <h1>Tenha acesso r&aacute;pido &agrave; sua conta e ao seu financiamento</h1>
+                        <p class="lead">Na &aacute;rea do cliente, voc&ecirc; encontra 2&ordf; via de boleto, antecipa&ccedil;&atilde;o de parcelas e acompanhamento da sua solicita&ccedil;&atilde;o.</p>
+                        <div class="cta-row">
+                            <a class="btn-primary" href="#sou-cliente">Acesse agora</a>
+                            <a class="btn-secondary" href="#servicos">Ver solu&ccedil;&otilde;es</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="slide">
+                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1800&q=80" alt="Carro em ambiente urbano">
+                    <div class="hero-copy">
+                        <p class="eyebrow">Financiamentos</p>
+                        <h1>Parcelas sob medida para tirar seu carro do papel</h1>
+                        <p class="lead">Simule online, compare condi&ccedil;&otilde;es e avance com uma jornada simples, moderna e pensada para convers&atilde;o.</p>
+                        <div class="cta-row">
+                            <a class="btn-primary" href="#marcas">Simule agora</a>
+                            <a class="btn-secondary" href="#seguros">Conhecer seguros</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="slide">
+                    <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1800&q=80" alt="Motorista ao lado do carro">
+                    <div class="hero-copy">
+                        <p class="eyebrow">Seguros</p>
+                        <h1>Prote&ccedil;&atilde;o completa para o seu momento</h1>
+                        <p class="lead">Seguro auto, vida, residencial e assist&ecirc;ncia com contrata&ccedil;&atilde;o r&aacute;pida e comunica&ccedil;&atilde;o direta com o cliente.</p>
+                        <div class="cta-row">
+                            <a class="btn-primary" href="#seguros">Solicite uma cota&ccedil;&atilde;o</a>
+                            <a class="btn-secondary" href="#contato">Falar com especialista</a>
+                        </div>
+                    </div>
+                </article>
+
+                <button class="hero-arrow left" type="button" aria-label="Slide anterior">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                </button>
+                <button class="hero-arrow right" type="button" aria-label="Próximo slide">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </button>
+
+                <div class="hero-dots" aria-label="Navegação do carrossel">
+                    <button class="dot active" type="button" aria-label="Ir para slide 1"></button>
+                    <button class="dot" type="button" aria-label="Ir para slide 2"></button>
+                    <button class="dot" type="button" aria-label="Ir para slide 3"></button>
+                </div>
             </div>
-            <div class="live-indicator">
-                <span class="pulse-dot"></span> Ao Vivo
+        </section>
+
+        <section class="section" id="servicos">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <h2>Solu&ccedil;&otilde;es em destaque</h2>
+                    </div>
+                    <p>Estruturei a vitrine principal com o mesmo padr&atilde;o visual das refer&ecirc;ncias: dois grandes pain&eacute;is, sobreposi&ccedil;&atilde;o escura, tipografia forte e CTA branco central.</p>
+                </div>
+
+                <div class="services-grid">
+                    <article class="service-card" id="marcas" style="background-image: url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80');">
+                        <div class="service-content">
+                            <h3>Financiamentos</h3>
+                            <p>Financie seu ve&iacute;culo com parcelas ajustadas ao seu bolso. Uma experi&ecirc;ncia direta para quem quer simular, comparar e contratar com rapidez.</p>
+                            <a class="cta" href="#sou-cliente">Simule agora</a>
+                        </div>
+                    </article>
+
+                    <article class="service-card" id="seguros" style="background-image: url('https://images.unsplash.com/photo-1502161254066-6c74afbf07aa?auto=format&fit=crop&w=1200&q=80');">
+                        <div class="service-content">
+                            <h3>Seguros</h3>
+                            <p>Seguro de vida, auto, residencial, celular e garantia estendida em uma jornada mais simples, com comunica&ccedil;&atilde;o clara e resposta r&aacute;pida.</p>
+                            <a class="cta" href="#contato">Solicite uma cota&ccedil;&atilde;o</a>
+                        </div>
+                    </article>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div id="loading" class="status-container">
-            <div class="loader"></div>
-            <h3 style="color: var(--primary-color); font-family: var(--font-display); margin-bottom: 0.5rem;">
-                Sincronizando Mercado</h3>
-            <p id="loading-status" class="loading-text-sub">Conectando aos terminais de dados...</p>
-        </div>
+        <section class="section" id="sou-cliente">
+            <div class="container client-panel">
+                <div class="client-visual">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80" alt="Celular exibindo servi&ccedil;os digitais">
+                </div>
 
-        <div id="error-container" class="status-container hidden">
-            <svg style="width: 48px; height: 48px; color: #ef4444; margin: 0 auto 1.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-            <h3 style="color: var(--primary-color); font-family: var(--font-display); margin-bottom: 1rem;">Serviço Indisponível
-            </h3>
-            <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">Nossos terminais não conseguiram sincronizar com as fontes de notícias no momento. Tente novamente em alguns minutos.</p>
-        </div>
+                <div class="client-copy">
+                    <h2>Acesse a &aacute;rea Sou Cliente e resolva tudo com poucos cliques</h2>
+                    <p>Emita sua 2&ordf; via de boleto, antecipe parcelas, acompanhe solicita&ccedil;&otilde;es e consulte dados do seu contrato em um fluxo objetivo e visualmente alinhado ao benchmark enviado.</p>
+                    <div class="quick-label">Acesso r&aacute;pido</div>
+                    <div class="quick-grid">
+                        <a class="quick-card" href="#contato">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <path d="M8 3h6l5 5v13H8z" />
+                                <path d="M14 3v6h6" />
+                                <path d="M10 13h6M10 17h4" />
+                            </svg>
+                            <h3>2&ordf; via do boleto</h3>
+                        </a>
 
-        <div id="content-container" class="hidden"></div>
+                        <a class="quick-card" href="#contato">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <path d="M7 7h10v10H7z" />
+                                <path d="M10 10h4M12 8v8" />
+                                <path d="M5 5h10M9 19h10" />
+                            </svg>
+                            <h3>Antecipação de pagamento</h3>
+                        </a>
+
+                        <a class="quick-card" href="#contato">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <path d="M12 3l7 4v5c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V7z" />
+                                <path d="M10 11h4M10 15h3" />
+                            </svg>
+                            <h3>Declaração de quitação</h3>
+                        </a>
+
+                        <a class="quick-card" href="#contato">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <path d="M12 12a4 4 0 100-8 4 4 0 000 8z" />
+                                <path d="M4 21c1.8-4 5-6 8-6s6.2 2 8 6" />
+                            </svg>
+                            <h3>Acompanhe sua solicitação</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="notice-band">
+            <div class="container notice-wrap">
+                <h3>Comunicado importante</h3>
+                <p>Esta p&aacute;gina foi redesenhada para reproduzir a linguagem visual das imagens de refer&ecirc;ncia, mantendo foco em servi&ccedil;os financeiros, convers&atilde;o e leitura clara em desktop e mobile.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <h2>Diferenciais da experi&ecirc;ncia</h2>
+                    </div>
+                    <p>Al&eacute;m da semelhan&ccedil;a visual, a estrutura tamb&eacute;m foi organizada para facilitar futuras integra&ccedil;&otilde;es com formul&aacute;rios, simuladores ou &aacute;reas logadas.</p>
+                </div>
+                <div class="info-grid">
+                    <article class="info-card">
+                        <h3>Hero com carrossel</h3>
+                        <p>O topo agora tem destaque de campanhas, com navega&ccedil;&atilde;o lateral e indicadores inferiores como no layout de refer&ecirc;ncia.</p>
+                    </article>
+                    <article class="info-card">
+                        <h3>Seções modulares</h3>
+                        <p>Os blocos de financiamento, seguros e servi&ccedil;os do cliente ficaram independentes para facilitar expans&atilde;o futura.</p>
+                    </article>
+                    <article class="info-card" id="contato">
+                        <h3>Pronto para atendimento</h3>
+                        <p>Os CTAs e atalhos podem ser conectados depois a WhatsApp, formul&aacute;rio, chatbot ou portal autenticado sem reestruturar a p&aacute;gina.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="#" class="logo">
-                    <span class="logo-dot"></span> Notícias
-                    <span>Finanças</span>
-                </a>
-                <p>O portal de inteligência de mercado mais ágil do Brasil. Análises profundas, cotações em tempo real e as notícias que movem a economia mundial.</p>
-            </div>
-            <div class="footer-col" style="justify-self: center;">
-                <h3>Acesso Rápido</h3>
-                <ul>
-                    <li><a href="#">Destaques</a></li>
-                    <li><a href="#">Fechamento de Mercado</a></li>
-                    <li><a href="#">Carteiras Recomendadas</a></li>
-                    <li><a href="#">Termos de Uso</a></li>
-                    <li><a href="#">Política de Privacidade</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Organização</h3>
-                <div class="org-details">
-                    <p><strong>ASSOCIACAO EDUCACIONAL LPA</strong><br>CNPJ: 21.394.691/0001-25</p>
-                    <p><strong>Endereço da organização</strong><br>R DO ROSARIO, 313<br>VILA CAMARGOS<br>GUARULHOS - SP<br>07111-080<br>Brasil</p>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; <span id="current-year"></span>. Todos os direitos reservados.</p>
-            <div style="display: flex; gap: 1rem;">
-                <a href="#" style="color: #64748b; text-decoration: none;">X (Twitter)</a>
-                <a href="#" style="color: #64748b; text-decoration: none;">LinkedIn</a>
-                <a href="#" style="color: #64748b; text-decoration: none;">Instagram</a>
+        <div class="container footer-row">
+            <p>&copy; 2026 ARCM Online. Todos os direitos reservados.</p>
+            <div class="footer-row">
+                <a href="#inicio">Início</a>
+                <a href="#sou-cliente">Sou Cliente</a>
+                <a href="#contato">Contato</a>
             </div>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('current-year').textContent = new Date().getFullYear();
+        document.addEventListener("DOMContentLoaded", function() {
+            const slides = Array.from(document.querySelectorAll(".slide"));
+            const dots = Array.from(document.querySelectorAll(".dot"));
+            const prev = document.querySelector(".hero-arrow.left");
+            const next = document.querySelector(".hero-arrow.right");
+            let index = 0;
+            let timer;
 
-            const contentContainer = document.getElementById('content-container');
-            const loading = document.getElementById('loading');
-            const loadingStatus = document.getElementById('loading-status');
-            const errorContainer = document.getElementById('error-container');
-
-            const placeholderImg = 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800&h=500';
-
-            const rssSources = [{
-                name: 'G1 Economia',
-                url: 'https://g1.globo.com/rss/g1/economia/'
-            }, {
-                name: 'Money Times',
-                url: 'https://www.moneytimes.com.br/feed/'
-            }, {
-                name: 'Investing Brasil',
-                url: 'https://br.investing.com/rss/news_25.rss'
-            }, {
-                name: 'Jovem Pan',
-                url: 'https://jovempan.com.br/noticias/economia/feed'
-            }, {
-                name: 'InfoMoney',
-                url: 'https://www.infomoney.com.br/feed/'
-            }];
-
-            async function fetchNewsWithFallback() {
-                for (let i = 0; i < rssSources.length; i++) {
-                    const source = rssSources[i];
-                    loadingStatus.textContent = `Sincronizando via Terminal: ${source.name}...`;
-
-                    // Retornando ao rss2json oficial, mas agora blindado com Timeout de 8s nativo para não travar
-                    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(source.url)}`;
-
-                    try {
-                        const controller = new AbortController();
-                        const timeoutId = setTimeout(() => controller.abort(), 8000);
-
-                        const response = await fetch(apiUrl, {
-                            signal: controller.signal
-                        });
-                        clearTimeout(timeoutId);
-
-                        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-                        const data = await response.json();
-
-                        if (data.status === 'ok' && data.items && data.items.length > 0) {
-                            loading.classList.add('hidden');
-                            contentContainer.classList.remove('hidden');
-
-                            const sourceInfo = document.createElement('div');
-                            sourceInfo.style.marginBottom = '2.5rem';
-                            sourceInfo.style.fontSize = '0.9rem';
-                            sourceInfo.style.color = 'var(--text-muted)';
-                            sourceInfo.style.display = 'flex';
-                            sourceInfo.style.alignItems = 'center';
-                            sourceInfo.style.gap = '8px';
-                            sourceInfo.innerHTML = `
-                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                Fonte de dados ativa: <strong>${source.name}</strong>
-                            `;
-                            contentContainer.appendChild(sourceInfo);
-
-                            processAndRender(data.items, source.name);
-                            return;
-                        } else {
-                            console.warn(`Fonte ${source.name} retornou erro interno da API:`, data.message);
-                            continue;
-                        }
-                    } catch (error) {
-                        console.warn(`Terminal ${source.name} indisponível: ${error.message}`);
-                    }
-
-                    if (i === rssSources.length - 1) {
-                        loading.classList.add('hidden');
-                        errorContainer.classList.remove('hidden');
-                    }
-                }
-            }
-
-            function stripHtml(html) {
-                const tmp = document.createElement("DIV");
-                tmp.innerHTML = html;
-                return tmp.textContent || tmp.innerText || "";
-            }
-
-            function processAndRender(articles, sourceName) {
-                const groupedNews = {};
-
-                articles.forEach(article => {
-                    let category = (article.categories && article.categories.length > 0) ?
-                        article.categories[0] :
-                        'Mercados';
-
-                    category = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
-                    if (category.length > 20) category = 'Finanças';
-
-                    if (!groupedNews[category]) groupedNews[category] = [];
-                    groupedNews[category].push(article);
+            function showSlide(nextIndex) {
+                index = (nextIndex + slides.length) % slides.length;
+                slides.forEach(function(slide, slideIndex) {
+                    slide.classList.toggle("active", slideIndex === index);
                 });
-
-                for (const [category, items] of Object.entries(groupedNews)) {
-                    if (items.length < 1) continue;
-
-                    const categoryItems = items.slice(0, 6);
-                    const section = document.createElement('section');
-                    section.className = 'category-section';
-
-                    const header = document.createElement('div');
-                    header.className = 'section-header';
-
-                    const title = document.createElement('h2');
-                    title.className = 'section-title';
-                    title.textContent = category;
-
-                    header.appendChild(title);
-                    section.appendChild(header);
-
-                    const grid = document.createElement('div');
-                    grid.className = 'news-grid';
-
-                    categoryItems.forEach(article => {
-                        const card = document.createElement('a');
-                        card.className = 'card';
-                        card.href = article.link;
-                        card.target = '_blank';
-                        card.rel = 'noopener noreferrer';
-
-                        const desc = article.description || '';
-                        let imageUrl = placeholderImg;
-                        if (article.enclosure && article.enclosure.link) {
-                            imageUrl = article.enclosure.link;
-                        } else if (article.thumbnail) {
-                            imageUrl = article.thumbnail;
-                        } else if (desc) {
-                            const imgMatch = desc.match(/<img[^>]+src="([^">]+)"/);
-                            if (imgMatch && imgMatch[1]) imageUrl = imgMatch[1];
-                        }
-
-                        const pubDate = new Date(article.pubDate);
-
-                        let dateString = 'Recente';
-                        if (!isNaN(pubDate)) {
-                            const now = new Date();
-                            const diffHours = Math.floor((now - pubDate) / (1000 * 60 * 60));
-
-                            if (diffHours < 1) {
-                                dateString = 'Agora mesmo';
-                            } else if (diffHours < 24) {
-                                dateString = `Há ${diffHours} ${diffHours === 1 ? 'hora' : 'horas'}`;
-                            } else {
-                                dateString = new Intl.DateTimeFormat('pt-BR', {
-                                    day: '2-digit',
-                                    month: 'short'
-                                }).format(pubDate);
-                            }
-                        }
-
-                        const cleanText = stripHtml(desc);
-                        const truncatedDesc = cleanText.length > 120 ? cleanText.substring(0, 120) + '...' : cleanText;
-
-                        card.innerHTML = `
-                            <div class="card-img-container">
-                                <div class="card-category-badge">${category}</div>
-                                <img src="${imageUrl}" alt="" class="card-img" loading="lazy" onerror="this.src='${placeholderImg}'">
-                            </div>
-                            <div class="card-content">
-                                <div class="card-date">
-                                    <svg width="14" height="14" fill="none" class="text-muted" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                    ${dateString}
-                                </div>
-                                <h3 class="card-title">${article.title}</h3>
-                                <p class="card-desc">${truncatedDesc}</p>
-                                <div class="card-footer">
-                                    <span class="card-source">${sourceName}</span>
-                                    <div class="card-btn">
-                                        Ler mais
-                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                        grid.appendChild(card);
-                    });
-
-                    section.appendChild(grid);
-                    contentContainer.appendChild(section);
-                }
+                dots.forEach(function(dot, dotIndex) {
+                    dot.classList.toggle("active", dotIndex === index);
+                });
             }
 
-            fetchNewsWithFallback();
+            function restartTimer() {
+                clearInterval(timer);
+                timer = setInterval(function() {
+                    showSlide(index + 1);
+                }, 6000);
+            }
+
+            prev.addEventListener("click", function() {
+                showSlide(index - 1);
+                restartTimer();
+            });
+
+            next.addEventListener("click", function() {
+                showSlide(index + 1);
+                restartTimer();
+            });
+
+            dots.forEach(function(dot, dotIndex) {
+                dot.addEventListener("click", function() {
+                    showSlide(dotIndex);
+                    restartTimer();
+                });
+            });
+
+            showSlide(0);
+            restartTimer();
         });
     </script>
 </body>
