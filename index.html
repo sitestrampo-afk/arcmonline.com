@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -25,43 +25,43 @@
             --shadow: 0 20px 45px rgba(17, 34, 61, 0.08);
             --container: 1320px;
         }
-
+        
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
+        
         html {
             scroll-behavior: smooth;
         }
-
+        
         body {
             font-family: "Manrope", sans-serif;
             color: var(--ink);
             background: var(--white);
             line-height: 1.55;
         }
-
+        
         a {
             color: inherit;
             text-decoration: none;
         }
-
+        
         img {
             display: block;
             max-width: 100%;
         }
-
+        
         .container {
             width: min(calc(100% - 48px), var(--container));
             margin: 0 auto;
         }
-
+        
         .section {
             padding: 92px 0;
         }
-
+        
         .eyebrow {
             font-size: 0.92rem;
             font-weight: 700;
@@ -69,18 +69,18 @@
             text-transform: uppercase;
             color: #95a9c3;
         }
-
+        
         .title {
             font-size: clamp(2.1rem, 4vw, 3.45rem);
             line-height: 1.08;
             color: var(--primary-deep);
         }
-
+        
         .text {
             font-size: 1.12rem;
             color: #24324a;
         }
-
+        
         .button {
             display: inline-flex;
             align-items: center;
@@ -95,16 +95,16 @@
             text-transform: uppercase;
             transition: transform 0.22s ease, background 0.22s ease;
         }
-
+        
         .button:hover {
             transform: translateY(-2px);
             background: var(--accent-deep);
         }
-
+        
         .hero {
             background: linear-gradient(90deg, #2c6fe0 0 77%, #f4f9ff 77% 100%);
         }
-
+        
         .hero-grid {
             min-height: 700px;
             display: grid;
@@ -112,31 +112,31 @@
             align-items: center;
             gap: 24px;
         }
-
+        
         .hero-copy {
             max-width: 760px;
             padding: 72px 0;
             color: var(--white);
         }
-
+        
         .hero-copy .eyebrow {
             color: var(--accent);
             margin-bottom: 26px;
         }
-
+        
         .hero-copy h1 {
             font-size: clamp(3rem, 6vw, 4.9rem);
             line-height: 0.98;
             margin-bottom: 28px;
         }
-
+        
         .hero-copy p {
             max-width: 780px;
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 34px;
         }
-
+        
         .hero-visual {
             align-self: stretch;
             display: flex;
@@ -144,7 +144,7 @@
             justify-content: center;
             padding: 16px 0;
         }
-
+        
         .hero-visual img {
             width: 100%;
             max-width: 560px;
@@ -152,35 +152,35 @@
             max-height: 680px;
             object-fit: cover;
         }
-
+        
         .intro {
             text-align: center;
         }
-
+        
         .intro .title {
             max-width: 760px;
             margin: 10px auto 20px;
         }
-
+        
         .intro .text {
             max-width: 980px;
             margin: 0 auto;
             font-size: 1.18rem;
         }
-
+        
         .intro strong {
             display: block;
             margin-top: 8px;
             color: var(--primary-deep);
         }
-
+        
         .service-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 30px;
             margin-top: 56px;
         }
-
+        
         .service-card {
             padding: 40px 30px 36px;
             border: 1px solid var(--line);
@@ -188,7 +188,7 @@
             text-align: center;
             box-shadow: 0 10px 24px rgba(17, 34, 61, 0.04);
         }
-
+        
         .service-icon {
             width: 78px;
             height: 78px;
@@ -200,19 +200,19 @@
             color: var(--primary-deep);
             font-size: 2rem;
         }
-
+        
         .service-card h3 {
             font-size: 1.8rem;
             color: var(--primary-deep);
             margin-bottom: 16px;
         }
-
+        
         .service-card p {
             color: #7b8594;
             font-size: 1.04rem;
             margin-bottom: 22px;
         }
-
+        
         .service-card a {
             font-weight: 800;
             color: var(--primary-deep);
@@ -220,75 +220,75 @@
             letter-spacing: 0.06em;
             font-size: 0.92rem;
         }
-
+        
         .cta-center {
             text-align: center;
             margin-top: 44px;
         }
-
+        
         .feature {
             background: var(--soft);
         }
-
+        
         .feature-grid {
             display: grid;
             grid-template-columns: 1fr 0.95fr;
             gap: 56px;
             align-items: center;
         }
-
+        
         .feature-image img {
             width: 100%;
             height: 430px;
             object-fit: cover;
         }
-
+        
         .feature-copy .eyebrow {
             margin-bottom: 10px;
         }
-
+        
         .feature-copy .title {
             margin-bottom: 28px;
         }
-
+        
         .feature-copy .text strong {
             display: block;
             margin-bottom: 4px;
             color: var(--primary-deep);
         }
-
+        
         .feature-copy .text {
             margin-bottom: 32px;
             max-width: 34ch;
         }
-
+        
         .gallery-header {
             text-align: center;
             max-width: 980px;
             margin: 0 auto 52px;
         }
-
+        
         .gallery-header .title {
             margin: 8px 0 18px;
         }
-
+        
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 28px;
         }
-
+        
         .gallery-grid img {
             width: 100%;
             height: 280px;
             object-fit: cover;
             border-radius: 4px;
         }
-
+        
         .testimonials {
             background: var(--soft);
         }
-
+        
         .testimonials-top {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -296,87 +296,87 @@
             align-items: start;
             margin-bottom: 46px;
         }
-
+        
         .testimonials-top .title {
             max-width: 620px;
         }
-
+        
         .testimonials-top p {
             font-size: 1.12rem;
         }
-
+        
         .quote-name {
             margin-top: 28px;
             font-weight: 800;
             color: var(--primary-deep);
         }
-
+        
         .quote-role {
             color: #a1a9b3;
             font-size: 1.05rem;
         }
-
+        
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 24px;
         }
-
+        
         .testimonial-card {
             background: var(--white);
             text-align: center;
             overflow: hidden;
         }
-
+        
         .testimonial-card img {
             width: 100%;
             height: 390px;
             object-fit: cover;
         }
-
+        
         .testimonial-body {
             padding: 28px 22px 34px;
         }
-
+        
         .testimonial-body h3 {
             color: var(--primary-deep);
             font-size: 1.2rem;
             margin-bottom: 6px;
         }
-
+        
         .testimonial-body .role {
             color: #b1b7c0;
             margin-bottom: 20px;
         }
-
+        
         .testimonial-body p {
             color: #8b93a0;
         }
-
+        
         .footer {
             background: var(--footer);
             color: var(--white);
             padding-top: 72px;
         }
-
+        
         .footer-grid {
             display: grid;
             grid-template-columns: 1.25fr 1fr 1fr 1fr;
             gap: 44px;
             padding-bottom: 74px;
         }
-
+        
         .footer-brand {
             max-width: 340px;
         }
-
+        
         .footer-logo {
             display: inline-flex;
             align-items: center;
             gap: 14px;
             margin-bottom: 26px;
         }
-
+        
         .footer-logo-mark {
             width: 38px;
             height: 38px;
@@ -384,14 +384,14 @@
             transform: rotate(45deg);
             position: relative;
         }
-
+        
         .footer-logo-mark::before,
         .footer-logo-mark::after {
             content: "";
             position: absolute;
             background: var(--white);
         }
-
+        
         .footer-logo-mark::before {
             width: 3px;
             height: 28px;
@@ -399,7 +399,7 @@
             top: 2px;
             transform: translateX(-50%);
         }
-
+        
         .footer-logo-mark::after {
             width: 28px;
             height: 3px;
@@ -407,46 +407,46 @@
             top: 50%;
             transform: translateY(-50%);
         }
-
+        
         .footer-logo-text {
             font-size: 1.05rem;
             font-weight: 800;
             line-height: 1.15;
             text-transform: uppercase;
         }
-
+        
         .footer p,
         .footer li,
         .footer a {
             color: rgba(255, 255, 255, 0.95);
         }
-
+        
         .footer h3 {
             font-size: 1.05rem;
             margin-bottom: 22px;
         }
-
+        
         .footer ul {
             list-style: none;
         }
-
-        .footer li + li {
+        
+        .footer li+li {
             margin-top: 14px;
         }
-
+        
         .footer-contact a,
         .footer-schedule li,
         .footer-links a {
             font-size: 1.02rem;
             font-weight: 600;
         }
-
+        
         .footer-social {
             display: flex;
             gap: 16px;
             margin-top: 18px;
         }
-
+        
         .footer-social a {
             width: 28px;
             height: 28px;
@@ -456,12 +456,12 @@
             border-radius: 50%;
             font-size: 0.9rem;
         }
-
+        
         .footer-base {
             min-height: 24px;
             background: var(--footer-deep);
         }
-
+        
         .back-top {
             position: fixed;
             right: 16px;
@@ -476,66 +476,55 @@
             font-size: 1.25rem;
             box-shadow: var(--shadow);
         }
-
+        
         @media (max-width: 1100px) {
             .hero {
                 background: var(--primary);
             }
-
             .hero-grid,
             .feature-grid,
             .testimonials-top,
             .footer-grid {
                 grid-template-columns: 1fr;
             }
-
             .hero-copy {
                 padding-bottom: 20px;
             }
-
             .hero-visual {
                 padding: 0 0 40px;
             }
-
             .service-grid,
             .gallery-grid,
             .testimonial-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
-
+        
         @media (max-width: 720px) {
             .container {
                 width: min(calc(100% - 28px), var(--container));
             }
-
             .section {
                 padding: 68px 0;
             }
-
             .hero-grid {
                 min-height: auto;
             }
-
             .hero-copy {
                 padding-top: 56px;
             }
-
             .hero-copy h1 {
                 font-size: 2.85rem;
             }
-
             .button {
                 width: 100%;
                 min-width: 0;
             }
-
             .service-grid,
             .gallery-grid,
             .testimonial-grid {
                 grid-template-columns: 1fr;
             }
-
             .feature-image img,
             .gallery-grid img,
             .testimonial-card img {
@@ -549,7 +538,7 @@
     <header class="hero" id="topo">
         <div class="container hero-grid">
             <div class="hero-copy">
-                <div class="eyebrow">Suporte dedicado - Ligue para 0800 000 4764</div>
+                <div class="eyebrow">Suporte dedicado</div>
                 <h1>Atendimento Digital</h1>
                 <p>Se voc&ecirc; precisa solicitar segunda via, finalizar contratos ou colocar parcelas em dia, conte com um time preparado para orientar cada etapa com clareza, agilidade e aten&ccedil;&atilde;o.</p>
                 <a class="button" href="#contato">Fale com a equipe</a>
@@ -566,8 +555,8 @@
             <div class="container">
                 <div class="eyebrow">Estamos prontos para ajudar</div>
                 <h2 class="title">Aproximando voc&ecirc; do nosso atendimento</h2>
-                <p class="text">Contamos com especialistas preparados para oferecer suporte eficiente e cordial durante o expediente. Nosso objetivo &eacute; tornar cada processo mais simples, esclarecer suas perguntas e acompanhar sua demanda com responsabilidade do in&iacute;cio ao fim.
-                    <strong>Central: 0800 000 4764</strong>
+                <p class="text">Contamos com especialistas preparados para oferecer suporte eficiente e cordial durante o expediente. Nosso objetivo &eacute; tornar cada processo mais simples, esclarecer suas perguntas e acompanhar sua demanda com responsabilidade do
+                    in&iacute;cio ao fim.
                 </p>
 
                 <div class="service-grid">
@@ -609,8 +598,8 @@
                     <div class="eyebrow">Bem-vindo ao nosso canal de atendimento</div>
                     <h2 class="title">Atendimento pensado para cada necessidade</h2>
                     <p class="text">
-                        <strong>Estamos aqui para facilitar o seu atendimento.</strong>
-                        Resolva solicita&ccedil;&otilde;es com mais rapidez e menos burocracia. Nosso time atua em hor&aacute;rio comercial para oferecer apoio pr&aacute;tico, organizado e pr&oacute;ximo, sempre considerando a realidade de cada cliente.
+                        <strong>Estamos aqui para facilitar o seu atendimento.</strong> Resolva solicita&ccedil;&otilde;es com mais rapidez e menos burocracia. Nosso time atua em hor&aacute;rio comercial para oferecer apoio pr&aacute;tico, organizado
+                        e pr&oacute;ximo, sempre considerando a realidade de cada cliente.
                     </p>
                     <a class="button" href="#galeria">Conhecer melhor</a>
                 </div>
@@ -649,7 +638,8 @@
                     </div>
 
                     <div>
-                        <p class="text">Ao longo da nossa atua&ccedil;&atilde;o, constru&iacute;mos resultados positivos por meio de atendimentos bem conduzidos e respostas efetivas. Veja como diferentes solicita&ccedil;&otilde;es foram resolvidas com seriedade, rapidez e clareza.</p>
+                        <p class="text">Ao longo da nossa atua&ccedil;&atilde;o, constru&iacute;mos resultados positivos por meio de atendimentos bem conduzidos e respostas efetivas. Veja como diferentes solicita&ccedil;&otilde;es foram resolvidas com seriedade, rapidez
+                            e clareza.</p>
                         <div class="quote-name">Marcos Almeida</div>
                         <div class="quote-role">Coordenador</div>
                     </div>
