@@ -1,15 +1,21 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Central de Atendimento Digital</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
     <style>
-         :root {
+        :root {
             --primary: #2f6fdd;
             --primary-deep: #0a3d78;
             --accent: #8dc5ff;
@@ -22,46 +28,48 @@
             --line: rgba(17, 34, 61, 0.1);
             --footer: #0a3d78;
             --footer-deep: #072d59;
+            --whatsapp: #25D366;
+            --whatsapp-dark: #128C7E;
             --shadow: 0 20px 45px rgba(17, 34, 61, 0.08);
             --container: 1320px;
         }
-        
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        
+
         html {
             scroll-behavior: smooth;
         }
-        
+
         body {
             font-family: "Manrope", sans-serif;
             color: var(--ink);
             background: var(--white);
             line-height: 1.55;
         }
-        
+
         a {
             color: inherit;
             text-decoration: none;
         }
-        
+
         img {
             display: block;
             max-width: 100%;
         }
-        
+
         .container {
             width: min(calc(100% - 48px), var(--container));
             margin: 0 auto;
         }
-        
+
         .section {
             padding: 92px 0;
         }
-        
+
         .eyebrow {
             font-size: 0.92rem;
             font-weight: 700;
@@ -69,22 +77,25 @@
             text-transform: uppercase;
             color: #95a9c3;
         }
-        
+
         .title {
             font-size: clamp(2.1rem, 4vw, 3.45rem);
             line-height: 1.08;
             color: var(--primary-deep);
         }
-        
+
         .text {
             font-size: 1.12rem;
             color: #24324a;
         }
-        
+
+        /* BOTÕES */
+
         .button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 10px;
             min-width: 238px;
             padding: 17px 28px;
             background: var(--accent);
@@ -93,18 +104,39 @@
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            transition: transform 0.22s ease, background 0.22s ease;
+            transition: transform 0.22s ease,
+                        background 0.22s ease,
+                        box-shadow 0.22s ease;
+            cursor: pointer;
         }
-        
+
         .button:hover {
             transform: translateY(-2px);
             background: var(--accent-deep);
+            box-shadow: 0 12px 30px rgba(10, 61, 120, 0.18);
         }
-        
+
+        .button-whatsapp {
+            background: var(--whatsapp);
+            color: #fff;
+        }
+
+        .button-whatsapp:hover {
+            background: var(--whatsapp-dark);
+            color: #fff;
+        }
+
+        /* HERO */
+
         .hero {
-            background: linear-gradient(90deg, #2c6fe0 0 77%, #f4f9ff 77% 100%);
+            background:
+                linear-gradient(
+                    90deg,
+                    #2c6fe0 0 77%,
+                    #f4f9ff 77% 100%
+                );
         }
-        
+
         .hero-grid {
             min-height: 700px;
             display: grid;
@@ -112,31 +144,31 @@
             align-items: center;
             gap: 24px;
         }
-        
+
         .hero-copy {
             max-width: 760px;
             padding: 72px 0;
             color: var(--white);
         }
-        
+
         .hero-copy .eyebrow {
             color: var(--accent);
             margin-bottom: 26px;
         }
-        
+
         .hero-copy h1 {
             font-size: clamp(3rem, 6vw, 4.9rem);
             line-height: 0.98;
             margin-bottom: 28px;
         }
-        
+
         .hero-copy p {
             max-width: 780px;
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 34px;
         }
-        
+
         .hero-visual {
             align-self: stretch;
             display: flex;
@@ -144,7 +176,7 @@
             justify-content: center;
             padding: 16px 0;
         }
-        
+
         .hero-visual img {
             width: 100%;
             max-width: 560px;
@@ -152,143 +184,103 @@
             max-height: 680px;
             object-fit: cover;
         }
-        
+
+        /* INTRO */
+
         .intro {
             text-align: center;
         }
-        
+
         .intro .title {
             max-width: 760px;
             margin: 10px auto 20px;
         }
-        
+
         .intro .text {
             max-width: 980px;
             margin: 0 auto;
             font-size: 1.18rem;
         }
-        
-        .intro strong {
-            display: block;
-            margin-top: 8px;
-            color: var(--primary-deep);
-        }
-        
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 30px;
-            margin-top: 56px;
-        }
-        
-        .service-card {
-            padding: 40px 30px 36px;
-            border: 1px solid var(--line);
-            background: var(--white);
-            text-align: center;
-            box-shadow: 0 10px 24px rgba(17, 34, 61, 0.04);
-        }
-        
-        .service-icon {
-            width: 78px;
-            height: 78px;
-            margin: 0 auto 30px;
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            background: var(--accent);
-            color: var(--primary-deep);
-            font-size: 2rem;
-        }
-        
-        .service-card h3 {
-            font-size: 1.8rem;
-            color: var(--primary-deep);
-            margin-bottom: 16px;
-        }
-        
-        .service-card p {
-            color: #7b8594;
-            font-size: 1.04rem;
-            margin-bottom: 22px;
-        }
-        
-        .service-card a {
-            font-weight: 800;
-            color: var(--primary-deep);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            font-size: 0.92rem;
-        }
-        
-        .cta-center {
-            text-align: center;
-            margin-top: 44px;
-        }
-        
+
+        /* FEATURE */
+
         .feature {
             background: var(--soft);
         }
-        
+
         .feature-grid {
             display: grid;
             grid-template-columns: 1fr 0.95fr;
             gap: 56px;
             align-items: center;
         }
-        
+
         .feature-image img {
             width: 100%;
             height: 430px;
             object-fit: cover;
         }
-        
+
         .feature-copy .eyebrow {
             margin-bottom: 10px;
         }
-        
+
         .feature-copy .title {
             margin-bottom: 28px;
         }
-        
+
         .feature-copy .text strong {
             display: block;
             margin-bottom: 4px;
             color: var(--primary-deep);
         }
-        
+
         .feature-copy .text {
             margin-bottom: 32px;
             max-width: 34ch;
         }
-        
+
+        /* GALERIA */
+
         .gallery-header {
             text-align: center;
             max-width: 980px;
             margin: 0 auto 52px;
         }
-        
+
         .gallery-header .title {
             margin: 8px 0 18px;
         }
-        
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 28px;
         }
-        
+
         .gallery-grid img {
             width: 100%;
             height: 280px;
             object-fit: cover;
             border-radius: 4px;
+            transition: transform 0.3s ease;
         }
-        
+
+        .gallery-grid img:hover {
+            transform: scale(1.02);
+        }
+
+        .cta-center {
+            text-align: center;
+            margin-top: 44px;
+        }
+
+        /* DEPOIMENTOS */
+
         .testimonials {
             background: var(--soft);
         }
-        
+
         .testimonials-top {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -296,87 +288,89 @@
             align-items: start;
             margin-bottom: 46px;
         }
-        
+
         .testimonials-top .title {
             max-width: 620px;
         }
-        
+
         .testimonials-top p {
             font-size: 1.12rem;
         }
-        
+
         .quote-name {
             margin-top: 28px;
             font-weight: 800;
             color: var(--primary-deep);
         }
-        
+
         .quote-role {
             color: #a1a9b3;
             font-size: 1.05rem;
         }
-        
+
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 24px;
         }
-        
+
         .testimonial-card {
             background: var(--white);
             text-align: center;
             overflow: hidden;
         }
-        
+
         .testimonial-card img {
             width: 100%;
             height: 390px;
             object-fit: cover;
         }
-        
+
         .testimonial-body {
             padding: 28px 22px 34px;
         }
-        
+
         .testimonial-body h3 {
             color: var(--primary-deep);
             font-size: 1.2rem;
             margin-bottom: 6px;
         }
-        
+
         .testimonial-body .role {
             color: #b1b7c0;
             margin-bottom: 20px;
         }
-        
+
         .testimonial-body p {
             color: #8b93a0;
         }
-        
+
+        /* FOOTER */
+
         .footer {
             background: var(--footer);
             color: var(--white);
             padding-top: 72px;
         }
-        
+
         .footer-grid {
             display: grid;
             grid-template-columns: 1.25fr 1fr 1fr 1fr;
             gap: 44px;
             padding-bottom: 74px;
         }
-        
+
         .footer-brand {
             max-width: 340px;
         }
-        
+
         .footer-logo {
             display: inline-flex;
             align-items: center;
             gap: 14px;
             margin-bottom: 26px;
         }
-        
+
         .footer-logo-mark {
             width: 38px;
             height: 38px;
@@ -384,14 +378,14 @@
             transform: rotate(45deg);
             position: relative;
         }
-        
+
         .footer-logo-mark::before,
         .footer-logo-mark::after {
             content: "";
             position: absolute;
             background: var(--white);
         }
-        
+
         .footer-logo-mark::before {
             width: 3px;
             height: 28px;
@@ -399,7 +393,7 @@
             top: 2px;
             transform: translateX(-50%);
         }
-        
+
         .footer-logo-mark::after {
             width: 28px;
             height: 3px;
@@ -407,304 +401,761 @@
             top: 50%;
             transform: translateY(-50%);
         }
-        
+
         .footer-logo-text {
             font-size: 1.05rem;
             font-weight: 800;
             line-height: 1.15;
             text-transform: uppercase;
         }
-        
+
         .footer p,
         .footer li,
         .footer a {
             color: rgba(255, 255, 255, 0.95);
         }
-        
+
         .footer h3 {
             font-size: 1.05rem;
             margin-bottom: 22px;
         }
-        
+
         .footer ul {
             list-style: none;
         }
-        
-        .footer li+li {
+
+        .footer li + li {
             margin-top: 14px;
         }
-        
+
         .footer-contact a,
         .footer-schedule li,
         .footer-links a {
             font-size: 1.02rem;
             font-weight: 600;
         }
-        
+
         .footer-social {
             display: flex;
             gap: 16px;
             margin-top: 18px;
         }
-        
+
         .footer-social a {
-            width: 28px;
-            height: 28px;
+            width: 36px;
+            height: 36px;
             display: grid;
             place-items: center;
             border: 1px solid rgba(255, 255, 255, 0.24);
             border-radius: 50%;
             font-size: 0.9rem;
+            transition: all 0.2s ease;
         }
-        
+
+        .footer-social a:hover {
+            background: var(--whatsapp);
+            border-color: var(--whatsapp);
+        }
+
         .footer-base {
             min-height: 24px;
             background: var(--footer-deep);
         }
-        
+
+        /* WHATSAPP FLUTUANTE */
+
+        .whatsapp-float {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            width: 62px;
+            height: 62px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--whatsapp);
+            color: #fff;
+            font-size: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            transition: transform 0.25s ease,
+                        background 0.25s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+            background: var(--whatsapp-dark);
+        }
+
+        .whatsapp-float::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba(37, 211, 102, 0.45);
+            animation: whatsappPulse 2s infinite;
+        }
+
+        @keyframes whatsappPulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            70% {
+                transform: scale(1.35);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1.35);
+                opacity: 0;
+            }
+        }
+
+        /* TOPO */
+
         .back-top {
             position: fixed;
-            right: 16px;
-            bottom: 16px;
-            width: 52px;
-            height: 52px;
+            right: 22px;
+            bottom: 98px;
+            width: 48px;
+            height: 48px;
             display: grid;
             place-items: center;
             border-radius: 50%;
             background: var(--accent);
-            color: var(--white);
+            color: var(--primary-deep);
             font-size: 1.25rem;
             box-shadow: var(--shadow);
+            z-index: 9998;
         }
-        
+
+        /* RESPONSIVO */
+
         @media (max-width: 1100px) {
+
             .hero {
                 background: var(--primary);
             }
+
             .hero-grid,
             .feature-grid,
             .testimonials-top,
             .footer-grid {
                 grid-template-columns: 1fr;
             }
+
             .hero-copy {
                 padding-bottom: 20px;
             }
+
             .hero-visual {
                 padding: 0 0 40px;
             }
+
             .service-grid,
             .gallery-grid,
             .testimonial-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
-        
+
         @media (max-width: 720px) {
+
             .container {
                 width: min(calc(100% - 28px), var(--container));
             }
+
             .section {
                 padding: 68px 0;
             }
+
             .hero-grid {
                 min-height: auto;
             }
+
             .hero-copy {
                 padding-top: 56px;
             }
+
             .hero-copy h1 {
                 font-size: 2.85rem;
             }
+
             .button {
                 width: 100%;
                 min-width: 0;
             }
+
             .service-grid,
             .gallery-grid,
             .testimonial-grid {
                 grid-template-columns: 1fr;
             }
+
             .feature-image img,
             .gallery-grid img,
             .testimonial-card img {
                 height: auto;
+            }
+
+            .whatsapp-float {
+                right: 16px;
+                bottom: 16px;
+                width: 58px;
+                height: 58px;
+                font-size: 27px;
+            }
+
+            .back-top {
+                display: none;
             }
         }
     </style>
 </head>
 
 <body>
+
+    <!-- HERO -->
     <header class="hero" id="topo">
+
         <div class="container hero-grid">
+
             <div class="hero-copy">
-                <div class="eyebrow">Suporte dedicado</div>
-                <h1>Atendimento Digital</h1>
-                <p>Se voc&ecirc; precisa solicitar segunda via, finalizar contratos ou colocar parcelas em dia, conte com um time preparado para orientar cada etapa com clareza, agilidade e aten&ccedil;&atilde;o.</p>
-                <a class="button" href="#contato">Fale com a equipe</a>
+
+                <div class="eyebrow">
+                    Suporte dedicado
+                </div>
+
+                <h1>
+                    Atendimento Digital
+                </h1>
+
+                <p>
+                    Se você precisa solicitar segunda via,
+                    finalizar contratos ou colocar parcelas em dia,
+                    conte com um time preparado para orientar cada
+                    etapa com clareza, agilidade e atenção.
+                </p>
+
+                <a
+                    class="button button-whatsapp"
+                    href="https://wa.me/5514998444226?text=Gostaria%20de%20falar%20com%20um%20atendente..."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    💬 Fale com a equipe
+                </a>
+
             </div>
 
             <div class="hero-visual">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80" alt="Profissional prestando atendimento digital com headset">
+
+                <img
+                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80"
+                    alt="Profissional prestando atendimento digital com headset"
+                >
+
             </div>
+
         </div>
+
     </header>
 
+
     <main>
+
+        <!-- INTRO -->
         <section class="section intro">
+
             <div class="container">
-                <div class="eyebrow">Estamos prontos para ajudar</div>
-                <h2 class="title">Conectando você às nossas soluções</h2>
-                <p class="text">Dispomos de uma equipe altamente qualificada para prestar atendimento ágil e atencioso ao longo de todo o expediente. Nosso compromisso é otimizar sua experiência, sanar suas dúvidas e acompanhar cada solicitação com máxima dedicação do
-                    início ao fim.
+
+                <div class="eyebrow">
+                    Estamos prontos para ajudar
+                </div>
+
+                <h2 class="title">
+                    Conectando você às nossas soluções
+                </h2>
+
+                <p class="text">
+                    Dispomos de uma equipe altamente qualificada
+                    para prestar atendimento ágil e atencioso ao
+                    longo de todo o expediente. Nosso compromisso
+                    é otimizar sua experiência, sanar suas dúvidas
+                    e acompanhar cada solicitação com máxima
+                    dedicação do início ao fim.
                 </p>
+
             </div>
+
         </section>
 
+
+        <!-- FEATURE -->
         <section class="section feature">
+
             <div class="container feature-grid">
+
                 <div class="feature-image">
-                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="Equipe reunida em ambiente profissional">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
+                        alt="Equipe reunida em ambiente profissional"
+                    >
+
                 </div>
 
                 <div class="feature-copy">
-                    <div class="eyebrow">Bem-vindo ao nosso canal de atendimento</div>
-                    <h2 class="title">Atendimento pensado para cada necessidade</h2>
+
+                    <div class="eyebrow">
+                        Bem-vindo ao nosso canal de atendimento
+                    </div>
+
+                    <h2 class="title">
+                        Atendimento pensado para cada necessidade
+                    </h2>
+
                     <p class="text">
-                        <strong>Estamos aqui para facilitar o seu atendimento.</strong> Resolva solicita&ccedil;&otilde;es com mais rapidez e menos burocracia. Nosso time atua em hor&aacute;rio comercial para oferecer apoio pr&aacute;tico, organizado
-                        e pr&oacute;ximo, sempre considerando a realidade de cada cliente.
+
+                        <strong>
+                            Estamos aqui para facilitar o seu atendimento.
+                        </strong>
+
+                        Resolva solicitações com mais rapidez e menos
+                        burocracia. Nosso time atua em horário comercial
+                        para oferecer apoio prático, organizado e próximo,
+                        sempre considerando a realidade de cada cliente.
+
                     </p>
-                    <a class="button" href="#galeria">Conhecer melhor</a>
+
+                    <a
+                        class="button button-whatsapp"
+                        href="https://wa.me/5514998444226?text=Gostaria%20de%20falar%20com%20um%20atendente..."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        💬 Falar no WhatsApp
+                    </a>
+
                 </div>
+
             </div>
+
         </section>
 
+
+        <!-- GALERIA -->
         <section class="section" id="galeria">
+
             <div class="container">
+
                 <div class="gallery-header">
-                    <div class="eyebrow">Praticas, objetivas e seguras</div>
-                    <h2 class="title">Levando voc&ecirc; at&eacute; as alternativas mais adequadas</h2>
-                    <p class="text">Trabalhamos para entregar atendimento consistente, comunica&ccedil;&atilde;o clara e servi&ccedil;os eficientes. Nossa prioridade &eacute; responder cada demanda com qualidade, rapidez e confian&ccedil;a.</p>
+
+                    <div class="eyebrow">
+                        Práticas, objetivas e seguras
+                    </div>
+
+                    <h2 class="title">
+                        Levando você até as alternativas mais adequadas
+                    </h2>
+
+                    <p class="text">
+                        Trabalhamos para entregar atendimento consistente,
+                        comunicação clara e serviços eficientes. Nossa
+                        prioridade é responder cada demanda com qualidade,
+                        rapidez e confiança.
+                    </p>
+
                 </div>
+
 
                 <div class="gallery-grid">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80" alt="Profissional em atendimento pelo notebook">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="Estacao de trabalho com sistemas abertos">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80" alt="Profissional registrando informacoes">
-                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80" alt="Equipe alinhando atividades no escritorio">
-                    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80" alt="Grupo debatendo estrategias">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Equipe colaborando em reuniao de trabalho">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80"
+                        alt="Profissional em atendimento pelo notebook"
+                    >
+
+                    <img
+                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+                        alt="Estação de trabalho com sistemas abertos"
+                    >
+
+                    <img
+                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
+                        alt="Profissional registrando informações"
+                    >
+
+                    <img
+                        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80"
+                        alt="Equipe alinhando atividades no escritório"
+                    >
+
+                    <img
+                        src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80"
+                        alt="Grupo debatendo estratégias"
+                    >
+
+                    <img
+                        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80"
+                        alt="Equipe colaborando em reunião de trabalho"
+                    >
+
                 </div>
+
 
                 <div class="cta-center">
-                    <a class="button" href="#contato">Solicitar suporte</a>
+
+                    <a
+                        class="button button-whatsapp"
+                        href="https://wa.me/5514998444226?text=Gostaria%20de%20falar%20com%20um%20atendente..."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        💬 Solicitar suporte
+                    </a>
+
                 </div>
+
             </div>
+
         </section>
 
+
+        <!-- DEPOIMENTOS -->
         <section class="section testimonials">
+
             <div class="container">
+
                 <div class="testimonials-top">
-                    <div>
-                        <div class="eyebrow">Estamos ao seu lado</div>
-                        <h2 class="title">Relatos de clientes que utilizaram nosso atendimento</h2>
-                    </div>
 
                     <div>
-                        <p class="text">Ao longo da nossa atua&ccedil;&atilde;o, constru&iacute;mos resultados positivos por meio de atendimentos bem conduzidos e respostas efetivas. Veja como diferentes solicita&ccedil;&otilde;es foram resolvidas com seriedade, rapidez
-                            e clareza.</p>
-                        <div class="quote-name">Marcos Almeida</div>
-                        <div class="quote-role">Coordenador</div>
+
+                        <div class="eyebrow">
+                            Estamos ao seu lado
+                        </div>
+
+                        <h2 class="title">
+                            Relatos de clientes que utilizaram nosso atendimento
+                        </h2>
+
                     </div>
+
+
+                    <div>
+
+                        <p class="text">
+                            Ao longo da nossa atuação, construímos resultados
+                            positivos por meio de atendimentos bem conduzidos
+                            e respostas efetivas. Veja como diferentes
+                            solicitações foram resolvidas com seriedade,
+                            rapidez e clareza.
+                        </p>
+
+                        <div class="quote-name">
+                            Marcos Almeida
+                        </div>
+
+                        <div class="quote-role">
+                            Coordenador
+                        </div>
+
+                    </div>
+
                 </div>
+
 
                 <div class="testimonial-grid">
-                    <article class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80" alt="Cliente satisfeito com o atendimento">
-                        <div class="testimonial-body">
-                            <h3>Ricardo Menezes</h3>
-                            <div class="role">Consultor Juridico</div>
-                            <p>Recebi um suporte atento e bem direcionado. O processo foi conduzido com muita qualidade.</p>
-                        </div>
-                    </article>
 
                     <article class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80" alt="Cliente de terno sorrindo">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
+                            alt="Cliente satisfeito com o atendimento"
+                        >
+
                         <div class="testimonial-body">
-                            <h3>Fernando Araujo</h3>
-                            <div class="role">Executivo Comercial</div>
-                            <p>O atendimento foi claro do come&ccedil;o ao fim. Recomendo pela organiza&ccedil;&atilde;o e agilidade.</p>
+
+                            <h3>
+                                Ricardo Menezes
+                            </h3>
+
+                            <div class="role">
+                                Consultor Jurídico
+                            </div>
+
+                            <p>
+                                Recebi um suporte atento e bem direcionado.
+                                O processo foi conduzido com muita qualidade.
+                            </p>
+
                         </div>
+
                     </article>
 
-                    <article class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80" alt="Cliente sorrindo com bracos cruzados">
-                        <div class="testimonial-body">
-                            <h3>Camila Duarte</h3>
-                            <div class="role">Diretora de Arte</div>
-                            <p>Consegui resolver minhas parcelas pendentes sem dificuldade e com orienta&ccedil;&atilde;o eficiente.</p>
-                        </div>
-                    </article>
 
                     <article class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=80" alt="Cliente usando jaqueta escura">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80"
+                            alt="Cliente de terno sorrindo"
+                        >
+
                         <div class="testimonial-body">
-                            <h3>Bruno Matos</h3>
-                            <div class="role">Analista de Sistemas</div>
-                            <p>Finalizei o contrato com tranquilidade. O suporte foi objetivo e tornou tudo mais simples.</p>
+
+                            <h3>
+                                Fernando Araujo
+                            </h3>
+
+                            <div class="role">
+                                Executivo Comercial
+                            </div>
+
+                            <p>
+                                O atendimento foi claro do começo ao fim.
+                                Recomendo pela organização e agilidade.
+                            </p>
+
                         </div>
+
                     </article>
+
+
+                    <article class="testimonial-card">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80"
+                            alt="Cliente sorrindo com braços cruzados"
+                        >
+
+                        <div class="testimonial-body">
+
+                            <h3>
+                                Camila Duarte
+                            </h3>
+
+                            <div class="role">
+                                Diretora de Arte
+                            </div>
+
+                            <p>
+                                Consegui resolver minhas solicitações sem
+                                dificuldade e com orientação eficiente.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="testimonial-card">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=80"
+                            alt="Cliente usando jaqueta escura"
+                        >
+
+                        <div class="testimonial-body">
+
+                            <h3>
+                                Bruno Matos
+                            </h3>
+
+                            <div class="role">
+                                Analista de Sistemas
+                            </div>
+
+                            <p>
+                                Finalizei minha solicitação com tranquilidade.
+                                O suporte foi objetivo e tornou tudo mais simples.
+                            </p>
+
+                        </div>
+
+                    </article>
+
                 </div>
+
             </div>
+
         </section>
+
     </main>
 
+
+    <!-- FOOTER -->
     <footer class="footer" id="contato">
+
         <div class="container footer-grid">
+
             <div class="footer-brand">
+
                 <div class="footer-logo">
-                    <div class="footer-logo-mark" aria-hidden="true"></div>
-                    <div class="footer-logo-text">Central de Relacionamento com Clientes</div>
+
+                    <div
+                        class="footer-logo-mark"
+                        aria-hidden="true"
+                    ></div>
+
+                    <div class="footer-logo-text">
+                        Central de Relacionamento com Clientes
+                    </div>
+
                 </div>
-                <p>Oferecemos alternativas pr&aacute;ticas para apoiar clientes com atendimento direcionado e solu&ccedil;&otilde;es adequadas para cada necessidade.</p>
+
+                <p>
+                    Oferecemos alternativas práticas para apoiar
+                    clientes com atendimento direcionado e soluções
+                    adequadas para cada necessidade.
+                </p>
+
             </div>
+
 
             <div class="footer-contact">
-                <h3>Dados da Empresa</h3>
+
+                <h3>
+                    Dados da Empresa
+                </h3>
+
                 <ul>
-                    <li>J B ALVES MADEIREIRA LTDA</li>
-                    <li>CNPJ: 06.339.190/0001-52</li>
+
+                    <li>
+                        J B ALVES MADEIREIRA LTDA
+                    </li>
+
+                    <li>
+                        CNPJ: 06.339.190/0001-52
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://wa.me/5514998444226?text=Gostaria%20de%20falar%20com%20um%20atendente..."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            WhatsApp: (14) 99844-4226
+                        </a>
+                    </li>
+
                 </ul>
+
                 <div class="footer-social">
-                    <a href="#" aria-label="Twitter">t</a>
-                    <a href="#" aria-label="Instagram">i</a>
-                    <a href="#" aria-label="WhatsApp">w</a>
+
+                    <a
+                        href="https://wa.me/5514998444226?text=Gostaria%20de%20falar%20com%20um%20atendente..."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="WhatsApp"
+                    >
+                        💬
+                    </a>
+
                 </div>
+
             </div>
+
 
             <div class="footer-schedule">
-                <h3>Atendimento</h3>
+
+                <h3>
+                    Atendimento
+                </h3>
+
                 <ul>
-                    <li>Seg - Sex: 8.00 hs 18.00 hs</li>
-                    <li>Sabado: Fechado</li>
-                    <li>Domingo: Fechado</li>
+
+                    <li>
+                        Seg - Sex: 8:00 às 18:00
+                    </li>
+
+                    <li>
+                        Sábado: Fechado
+                    </li>
+
+                    <li>
+                        Domingo: Fechado
+                    </li>
+
                 </ul>
+
             </div>
+
 
             <div class="footer-links">
-                <h3>Acesso Rapido</h3>
+
+                <h3>
+                    Acesso Rápido
+                </h3>
+
                 <ul>
-                    <li><a href="#topo">Novidades</a></li>
-                    <li><a href="#galeria">Quem Somos</a></li>
-                    <li><a href="#contato">Perguntas Frequentes</a></li>
-                    <li><a href="#contato">Equipe</a></li>
+
+                    <li>
+                        <a href="#topo">
+                            Início
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#galeria">
+                            Quem Somos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#contato">
+                            Contato
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://wa.me/5514998444226?text=Gostaria%20de%20falar%20com%20um%20atendente..."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Falar com atendente
+                        </a>
+                    </li>
+
                 </ul>
+
             </div>
+
         </div>
+
+
         <div class="footer-base"></div>
+
     </footer>
 
-    <a class="back-top" href="#topo" aria-label="Voltar ao topo">&uarr;</a>
-</body>
 
+    <!-- BOTÃO WHATSAPP FLUTUANTE -->
+
+    <a
+        class="whatsapp-float"
+        href="https://wa.me/5514998444226?text=Gostaria%20de%20falar%20com%20um%20atendente..."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Falar com um atendente pelo WhatsApp"
+        title="Falar com um atendente"
+    >
+        💬
+    </a>
+
+
+    <!-- BOTÃO VOLTAR AO TOPO -->
+
+    <a
+        class="back-top"
+        href="#topo"
+        aria-label="Voltar ao topo"
+    >
+        ↑
+    </a>
+
+</body>
 </html>
